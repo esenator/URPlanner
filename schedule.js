@@ -2,7 +2,7 @@
 $(function(){
 	set_collapse($("img.collapse"));
 	set_expand($("img.expand"));
-	select_course($("button.MTH162"));
+	select_course($("button"));
 });
 
 
@@ -39,15 +39,88 @@ function set_expand(DownArrow){
 
 function select_course(Button) {
 	Button.click(function() {
-		var course = document.getElementById('mth162');
-		course.style.background = "rgba(0, 255, 0, .7)";
+		var clas = $(this).attr('class');
 		
-		var pre = document.getElementById('mth161');
-		pre.style.background = "rgba(255, 0, 0, .7)";
-		
-		var post = document.getElementById('mth165');
-		post.style.background = "rgba(0, 0, 255, .7)";
+		if (clas == "MTH162") {
+			if (document.getElementById('mth162').style.background == "none repeat scroll 0% 0% rgba(0, 255, 0, 0.7)") {
+				mthToWhite();
+			} else {
+				cscToWhite();
+				mthToColors();
+			}
+		} else if (clas == "CSC172") {
+			if (document.getElementById('csc172').style.background == "none repeat scroll 0% 0% rgba(0, 255, 0, 0.7)") {
+				cscToWhite();
+			} else {
+				mthToWhite();
+				cscToColors();
+			}
+		}
 	});
+}
+
+function mthToWhite() {
+	var course = document.getElementById('mth162');
+	var pre = document.getElementById('mth161');
+	var post = document.getElementById('mth165');
+	
+	// Go back to default (white)
+	course.style.background = "rgba(255, 255, 255, .7)";
+	pre.style.background = "rgba(255, 255, 255, .7)";
+	post.style.background = "rgba(255, 255, 255, .7)";
+}
+
+function mthToColors() {
+	var course = document.getElementById('mth162');
+	var pre = document.getElementById('mth161');
+	var post = document.getElementById('mth165');
+	
+	
+	course.style.background = "rgba(0, 255, 0, .7)";	// Green
+	pre.style.background = "rgba(255, 0, 0, .7)";		// Red
+	post.style.background = "rgba(0, 0, 255, .7)";		// Blue
+}
+
+function cscToWhite() {
+	var course = document.getElementById('csc172');
+	var copre = document.getElementById('mth150');
+	var co = document.getElementById('csc172L');
+	var pre = document.getElementById('csc171');
+			
+	var postIds = ['csc173', 'csc200', 'csc242', 'csc252', 'csc282'];
+	var posts = [];
+	for (var i in postIds)
+		posts.push(document.getElementById(postIds[i]));
+		
+	// Go back to default (white)
+	course.style.background = "rgba(255, 255, 255, .7)";
+	copre.style.background = "rgba(255, 255, 255, .7)";
+	co.style.background = "rgba(255, 255, 255, .7)";
+	pre.style.background = "rgba(255, 255, 255, .7)";
+				
+	for (var i in posts)
+		posts[i].style.background = "rgba(255, 255, 255, .7)";
+}
+
+function cscToColors() {
+	var course = document.getElementById('csc172');
+	var copre = document.getElementById('mth150');
+	var co = document.getElementById('csc172L');
+	var pre = document.getElementById('csc171');
+			
+	var postIds = ['csc173', 'csc200', 'csc242', 'csc252', 'csc282'];
+	var posts = [];
+	for (var i in postIds)
+		posts.push(document.getElementById(postIds[i]));
+		
+		
+	course.style.background = "rgba(0, 255, 0, .7)";	// Green
+	pre.style.background = "rgba(255, 0, 0, .7)";		// Red
+	copre.style.background = "rgba(255, 127, 0, .7)";	// Orange
+	co.style.background = "rgba(255, 255, 0, .7)";		// Yellow
+				
+	for (var i in posts)
+		posts[i].style.background = "rgba(0, 0, 255, .7)";	// Blue
 }
 
 
