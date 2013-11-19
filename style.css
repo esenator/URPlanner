@@ -113,5 +113,6 @@ button {
 	background: none;
 	border: none;
 	font-family: roboto, serif;
-	font-size: 11pt;
+	font-size: 12pt;
+	padding: 0px;
 }
