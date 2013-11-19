@@ -1,6 +1,6 @@
 body {
 	font-family: roboto, serif;
-	background-image: url("Rush.jpg");
+	background-image: url("Images/Rush.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
@@ -22,19 +22,28 @@ p {
 	padding: 10px;
 }
 
+div#left>p {
+	margin: 0px;
+	padding: 0px;
+}
+
 #center {
 	margin-left: 200px;
 }
 
 #left {
-	width: 200px;
+	width: 230px;
+	max-height: 80%;
 	position: fixed;
 	left: 0px;
 	top: 50px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: auto;
 	border: 2px outset black;
 	background: rgba(255, 255, 255, .4);
+	margin-right: 30px;
+	padding: 10px;
+	padding-bottom: 20px;
 }
 
 table {
@@ -78,4 +87,31 @@ table td {
 	width: 47%;
 	padding-left: 1%;
 	padding-right: 2%;
+}
+
+img {
+	height: 15px;
+	width: 15px;
+	float: right;
+	margin-right: 10px;
+}
+
+ul {
+	display: none;
+}
+
+.year {
+	padding-bottom: 100px;
+}
+
+.clear {
+	clear: both;
+	line-height: 0;
+}
+
+button {
+	background: none;
+	border: none;
+	font-family: roboto, serif;
+	font-size: 11pt;
 }
