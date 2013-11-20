@@ -47,3 +47,10 @@ CREATE TABLE `URPlanner`.`courses` (
   `concur_id` INT NOT NULL,
   `time_offered` TIME NULL,
   PRIMARY KEY (`course_id`));
+
+CREATE TABLE `URPlanner`.`users` (
+  `user_id` INT UNSIGNED NOT NULL,
+  `username` CHAR(15) NOT NULL,
+  `password` TEXT NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC));
