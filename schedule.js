@@ -3,6 +3,8 @@ $(function(){
 	set_collapse($("img.collapse"));
 	set_expand($("img.expand"));
 	select_course($("button"));
+	
+	set_table_sorting($(".semester"));
 });
 
 
@@ -123,4 +125,11 @@ function cscToColors() {
 		posts[i].style.background = "rgba(0, 0, 255, .7)";	// Blue
 }
 
+function set_table_sorting(Data) {
+	Data.sortable({ items: "li:not(.ui-disabled)" });
+	Data.sortable({ connectWith: ".connectedSortable" });
+    	Data.sortable({ placeholder: "ui-highlight" });
+    
+    	Data.disableSelection();
+}
 
