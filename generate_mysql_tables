@@ -1,0 +1,49 @@
+CREATE TABLE `URPlanner`.`majors` (
+  `major_id` INT NOT NULL,
+  `college` INT NOT NULL,
+  `super_department` INT NOT NULL,
+  `degree_type` TEXT NOT NULL,
+  `major_name` TEXT NOT NULL,
+  PRIMARY KEY (`major_id`));
+
+CREATE TABLE `URPlanner`.`minors` (
+  `minor_id` INT NOT NULL,
+  `college` INT NOT NULL,
+  `super_department` INT NOT NULL,
+  `minor_name` TEXT NOT NULL,
+  PRIMARY KEY (`minor_id`));
+
+CREATE TABLE `URPlanner`.`clusters` (
+  `cluster_id` INT NOT NULL,
+  `college` INT NOT NULL,
+  `super_department` INT NOT NULL,
+  `cluster_name` TEXT NOT NULL,
+  PRIMARY KEY (`cluster_id`));
+
+CREATE TABLE `URPlanner`.`requirements` (
+  `major_id` INT NOT NULL,
+  `course_id` INT NOT NULL,
+  `is_pre_req` TINYINT NULL,
+  `is_core` TINYINT NULL,
+  `is_adv` TINYINT NULL,
+  `track_type` INT NULL,
+  `track_id` INT NULL,
+  `req_num` INT NULL,
+  `req_id` INT NULL,
+  PRIMARY KEY (`major_id`));
+
+CREATE TABLE `URPlanner`.`courses` (
+  `course_id` INT NOT NULL AUTO_INCREMENT,
+  `has_pre-reqs` TINYINT NULL,
+  `department` TEXT NOT NULL,
+  `course_num` INT UNSIGNED NOT NULL,
+  `course_name` TEXT NOT NULL,
+  `when_offered` INT NOT NULL,
+  `on_monday` TINYTEXT NULL,
+  `on_tuesday` TINYINT NULL,
+  `on_wednesday` TINYINT NULL,
+  `on_thursday` TINYTEXT NULL,
+  `on_friday` TINYTEXT NULL,
+  `concur_id` INT NOT NULL,
+  `time_offered` TIME NULL,
+  PRIMARY KEY (`course_id`));
