@@ -15,7 +15,7 @@ function set_collapse(UpArrow){
 	UpArrow.click(function(){  
 		$(this).parent().children("ul").first().slideUp();
 		
-		$(this).attr("src", "Images/DownWedge.png");
+		$(this).attr("src", "res/DownWedge.png");
 		$(this).attr("alt", "Expand");
 		$(this).attr("title", "Expand");
 		$(this).attr("class", "expand");
@@ -29,7 +29,7 @@ function set_expand(DownArrow){
 	DownArrow.click(function(){
 		$(this).parent().children("ul").first().slideDown();
 
-		$(this).attr("src", "Images/UpWedge.png");
+		$(this).attr("src", "res/UpWedge.png");
 		$(this).attr("alt", "Hide");
 		$(this).attr("title", "Collapse");
 		$(this).attr("class", "collapse");
@@ -128,8 +128,8 @@ function cscToColors() {
 function set_table_sorting(Data) {
 	Data.sortable({ items: "li:not(.ui-disabled)" });
 	Data.sortable({ connectWith: ".connectedSortable" });
-    	Data.sortable({ placeholder: "ui-highlight" });
+    Data.sortable({ placeholder: "ui-highlight" });
     
-    	Data.disableSelection();
+    Data.disableSelection();
 }
 
