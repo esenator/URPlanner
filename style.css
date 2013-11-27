@@ -18,6 +18,13 @@ h2 {
 	text-align: center;
 }
 
+h3 {
+	font-size: 12pt;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
 p {
 	padding: 10px;
 }
@@ -27,51 +34,48 @@ div#left>p {
 	padding: 0px;
 }
 
-#center {
-	margin-left: 200px;
+span.expandable {
+	margin-right: 15px;
 }
 
-#left {
-	width: 230px;
+#center {
+	margin-left: 180px;
+	margin-right: 220px;
+}
+
+#left, #right {
+	width: 200px;
 	max-height: 80%;
 	position: fixed;
-	left: 0px;
 	top: 50px;
 	overflow-y: auto;
 	overflow-x: auto;
 	border: 2px outset black;
 	background: rgba(255, 255, 255, .4);
-	margin-right: 30px;
 	padding: 10px;
 	padding-bottom: 20px;
 }
 
-table {
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 50px;
-	width: 350px;
-	border: 2px solid black;
-	font-style: normal;
-	font-size: 11pt;
-	border-collapse: collapse;
+#left {
+	left: 0px;
+	margin-right: 30px;
 }
 
-table th {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background: rgba(222, 222, 222, .9);
-	font-size: 13pt;
+#right {
+	right: 0px;
+	margin-left: 30px;
 }
 
-table td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background: rgba(255, 255, 255, .7);
+/*#directions {
+	display: block;
+}
+
+#prereqs,
+h3	{
+	display: none;
+}
+*/
+#course {
 	text-align: center;
 }
 
@@ -93,10 +97,12 @@ img {
 	height: 15px;
 	width: 15px;
 	float: right;
-	margin-right: 10px;
+	margin-right: 5px;
 }
 
 ul {
+	margin-top: 0px;
+	padding-left: 25px;
 	display: none;
 }
 
@@ -135,7 +141,7 @@ button {
 	text-align: center;
 	vertical-align: middle;
 	padding: 5px;
-	width: 350px;
+	width: 300px;
 }
 
 .ui-highlight {
