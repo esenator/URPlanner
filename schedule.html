@@ -6,6 +6,7 @@
 		<meta charset="utf-8">
 		<title>UR Planner</title>
 		<link rel="stylesheet" href="style.css" type = "text/css">
+		<script src="file:///Users/Becky/Documents/College/Fall2013_Se1/CSC212/FinalProject/PrototypeB2/schedule.jsonp"></script>
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="schedule.js" type="text/javascript"></script>
 		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -13,193 +14,17 @@
 
 	<body>
 		<div id="left">
-			<h2>Major(s)</h2>
-			<p><div>Computer Science, BS<img src="res/DownWedge.png"
-					alt="Expand" title="Expand" class="expand"/>
-				<ul>
-					<li>Pre-delcaration Courses<img src="res/DownWedge.png"
-							alt="Expand" title="Expand" class="expand"/>
-						<ul>
-							<li>CSC 171</li>
-							<li><button class="CSC172">CSC 172</button></li>
-							<li>MTH 150</li>
-							<li>MTH 161</li>
-							<li><button class="MTH162">MTH 162</button></li>
-						</ul>
-					</li>
-					<li>Core Courses<img src="res/DownWedge.png"
-							alt="Expand" title="Expand" class="expand"/>
-						<ul>
-							<li>MTH 165</li>
-							<li>CSC 173</li>
-							<li>CSC 242</li>
-							<li>CSC 252</li>
-							<li>CSC 254</li>
-							<li>CSC 280</li>
-							<li>CSC 282</li>
-							<li>CSC 200</li>
-						</ul>
-					</li>
-					<li>Advanced Courses<img src="res/DownWedge.png"
-							alt="Expand" title="Expand" class="expand"/>					
-						<ul>
-							<li>CSC 210</li>
-							<li>CSC 212</li>
-							<li>CSC 255</li>
-							<li>CSC 256</li>
-						</ul>
-					</li>
-				</ul>
-			</div></p>
-			
-			<h2>Minor(s)</h2>
-			<p><div>Mathematics<img src="res/DownWedge.png"
-					alt="Expand" title="Expand" class="expand"/>
-				<ul>
-					<li>Pre-declaration Courses<img src="res/DownWedge.png"
-							alt="Expand" title="Expand" class="expand"/>					
-						<ul>
-							<li>MTH 150</li>
-							<li>MTH 161</li>
-							<li><button class="MTH162">MTH 162</button></li>
-							<li>MTH 165</li>
-						</ul>
-					</li>
-					<li>Core Courses<img src="res/DownWedge.png"
-							alt="Expand" title="Expand" class="expand"/>	
-						<ul>
-							<li>MTH 235</li>
-						</ul>
-					</li>
-					<li>Advanced Courses<img src="res/DownWedge.png"
-							alt="Expand" title="Expand" class="expand"/>	
-						<ul>
-							<li>MTH 233</li>
-							<li>MTH 240</li>
-						</ul>
-					</li>
-				</ul>
-			</div></p>
-			
-			<h2>Cluster(s)</h2>
-			<p><div>Ethics and Values<img src="res/DownWedge.png"
-					alt="Expand" title="Expand" class="expand"/>
-				<ul>
-					<li>PHL 102</li>
-					<li>PHL 103</li>
-					<li>PHL 227</li>
-				</ul>
-			</div></p>
-			<p><div>Psychology as a Social Science<img src="res/DownWedge.png"
-					alt="Expand" title="Expand" class="expand"/>
-				<ul>
-					<li>PSY 101</li>
-					<li>PSY 161</li>
-					<li>PSY 171</li>
-				</ul>
-			</div></p>
 		</div>
 		
 		
 		<div id="center">
 			<h1>UR Planner</h1>
-				
-			<h2>Freshman (2010 - 2011)</h2>
-			<div class="semesters">
-			<div class="col1">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Fall 2010</li>
-			  		<li class="ui-default" id="csc171">CSC 171: The Science of Programming</li>
-  					<li class="ui-default" id="csc171L">CSC 171: The Science of Programming Lab</li>
-  					<li class="ui-default" id="mth161">MTH 161: Calculus IA</li>
-  					<li class="ui-default" id="mth150">MTH 150: Discrete Mathematics</li>
-  					<li class="ui-default">PSY 101: Introduction to Psychology</li>
-				</ul>
-			</div>
-
-			<div class="col2">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Spring 2011</li>
-			  		<li class="ui-default" id="csc172">CSC 172: The Science of Data Structures</li>
-  					<li class="ui-default" id="csc172L">CSC 172: The Science of Data Structures Lab</li>
-  					<li class="ui-default" id="mth162">MTH 162: Calculus IIA</li>
-  					<li class="ui-default">PHL 110: Introductory Logic</li>
-  					<li class="ui-default">WRT 105: Introduction to College Writing</li>
-				</ul>
-			</div>
-			<br class="clear"/>
-			</div>
 			
-			<h2>Sophomore (2011 - 2012)</h2>
-			<div class="semesters">
-			<div class="col1">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Fall 2011</li>
-			  		<li class="ui-default" id="csc173">CSC 173: Computation & Formal Systems</li>
-  					<li class="ui-default" id="csc172L">CSC 212: Human-Computer Interaction</li>
-  					<li class="ui-default" id="mth165">MTH 165: Linear Algebra with Differential Equations</li>
-  					<li class="ui-default">PHL 102: Ethics</li>
-				</ul>
+			<div id="years">
 			</div>
-
-			<div class="col2">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Spring 2012</li>
-			  		<li class="ui-default" id="csc252">CSC 252: Computer Organization</li>
-  					<li class="ui-default" id="csc200">CSC 200: Undergraduate Problem Seminar</li>
-  					<li class="ui-default">MTH 235: Linear Algebra</li>
-  					<li class="ui-default">PHL 227: The Meaning of Life</li>
-				</ul>
-			</div>
-			<br class="clear"/>
-			</div>
-			
-			<h2>Junior (2012 - 2013)</h2>
-			<div class="semesters">
-			<div class="col1">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Fall 2012</li>
-			  		<li class="ui-default" id="csc282">CSC 282: Design & Analysis of Efficient Algorithms</li>
-  					<li class="ui-default">CSC 254: Programming Language Design & Implementation</li>
-  					<li class="ui-default">PSY 171: Social and Emotional Development</li>
-  					<li class="ui-default">Elective</li>
-				</ul>
-			</div>
-
-			<div class="col2">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Spring 2013</li>
-			  		<li class="ui-default" id="csc242">CSC 242: Introduction to A.I.</li>
-  					<li class="ui-default">CSC 280: Computer Models & Limitations</li>
-  					<li class="ui-default">MTH 240: Introduction to Topology</li>
-  					<li class="ui-default">PSY 161: Social Psychology and Individual Differences</li>
-				</ul>
-			</div>
-			<br class="clear"/>
-			</div>
+		</div>
 		
-			<h2>Senior (2013 - 2014)</h2>
-			<div class="semesters">
-			<div class="col1">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Fall 2013</li>
-			  		<li class="ui-default">CSC 256: Operating Systems</li>
-  					<li class="ui-default">PHL 103: Contemporary Moral Problems</li>
-  					<li class="ui-default">Elective</li>
-  					<li class="ui-default">Elective</li>
-				</ul>
-			</div>
-
-			<div class="col2">
-				<ul class="connectedSortable semester">
-					<li class="ui-default ui-disabled semester-header">Spring 2014</li>
-			  		<li class="ui-default">CSC 255: Software Analysis and Improvement</li>
-  					<li class="ui-default">CSC 210: Web Programming</li>
-  					<li class="ui-default">MTH 233: Introduction to Cryptography</li>
-  					<li class="ui-default">Elective</li>
-				</ul>
-			</div>
-			</div>
+		<div id="right">
 		</div>
 	</body>
 </html>
