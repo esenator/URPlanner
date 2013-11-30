@@ -1,57 +1,71 @@
 <html>
 <head>
-<title>URPlanning</title>
-<style type="text/css">
-h1{ text-align:center:}
+  <title>URPlanning</title>
+  <style type="text/css">
+  h1{ text-align:center:}
 	
-.checker{margin-left:200px;
+  .checker{margin-left:200px;
 		margin-right:200px;
-	     margin-top:25px;
-		 clear:both;
-		 text-align:center;
-		 border-radius: 15px;
-		 padding:25px 50px;
+		margin-top:25px;
+		clear:both;
+		text-align:center;
+		border-radius: 15px;
+		padding:25px 50px;
 	background: rgba(255, 255, 255, 0.5);}
-.header{float:left;
+  .header{float:left;
 		margin-top:50px;
 		margin-left:10px;
 		font-family: roboto, serif;}
-.border{border-right-style:solid;
+  .border{border-right-style:solid;
 		border-bottom-style:solid;
 		padding-bottom:25px;
 		padding-right:25px;
 		float:left;
 		margin-top:50px;
 		font-family: roboto, serif;}
-body {
+  body {
 	font-family: roboto, serif;
 	background-image: url("res/Rush.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
 	background-position: center;
-}
-</style>
+  }
+  </style>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+ <script>
+  $(function() {
+    var majList = [
+      "Computer Science B.S.",
+      "Computer Science B.A.",
+      "Mathematics B.S.",
+      "Applied Mathematics B.S.",
+      "Mathematics (Honors) B.A.",
+      "Mathematics B.A.",
+    ];
+    $( "#majorChooser" ).autocomplete({
+      source: majList
+    });
+  });
+ </script>
 </head>
 
 <body>
-<div >
-<h1><img src="res/UofRshield.png" alt="shield" style="margin-top:20px;float:left;margin-left:35%;">
-<span class="border">UR Planning<br></span></h1>
-<p class="header">login</p>
-</div>
-<br>
+  <div >
+    <h1><img src="res/UofRshield.png" alt="shield" style="margin-top:20px;float:left;margin-left:35%;">
+    <span class="border">UR Planner<br></span></h1>
+    <p class="header">login</p>
+  </div>
+  <br>
 
 <div class="checker">
 
-Choose Major
-<select>
-<option value="german">German</option>
-  <option value="philo">Philosophy</option>
-  <option value="math">Mathematics</option>
-  <option value="compsci">Computer Science</option>
-<option value="psych">Psychology</option> 
-</select>
+
+  <label>Choose your major: </label>
+  <input id="majorChooser">
 <br> 
 <button>Add Another Major</button>
 
