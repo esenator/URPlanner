@@ -1,9 +1,119 @@
 <html>
-  <head>
-    <title>UR Planner</title>
-  </head>
-  
-  <body>
-    <p>This is a test</p>
-  </body>
+<head>
+<title>URPlanning</title>
+<style type="text/css">
+h1{ text-align:center:}
+	
+.checker{margin-left:200px;
+		margin-right:200px;
+	     margin-top:25px;
+		 clear:both;
+		 text-align:center;
+		 border-radius: 15px;
+		 padding:25px 50px;
+	background: rgba(255, 255, 255, 0.5);}
+.header{float:left;
+		margin-top:50px;
+		margin-left:10px;
+		font-family: roboto, serif;}
+.border{border-right-style:solid;
+		border-bottom-style:solid;
+		padding-bottom:25px;
+		padding-right:25px;
+		float:left;
+		margin-top:50px;
+		font-family: roboto, serif;}
+body {
+	font-family: roboto, serif;
+	background-image: url("res/Rush.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	background-position: center;
+}
+</style>
+</head>
+
+<body>
+<div >
+<h1><img src="res/UofRshield.png" alt="shield" style="margin-top:20px;float:left;margin-left:35%;">
+<span class="border">UR Planning<br></span></h1>
+<p class="header">login</p>
+</div>
+<br>
+
+<div class="checker">
+
+Choose Major
+<select>
+<option value="german">German</option>
+  <option value="philo">Philosophy</option>
+  <option value="math">Mathematics</option>
+  <option value="compsci">Computer Science</option>
+<option value="psych">Psychology</option> 
+</select>
+<br> 
+<button>Add Another Major</button>
+
+<br>
+<br>
+<br>
+Choose Minor
+<select>
+<option value="none">None</option>
+<option value="german">German</option>
+  <option value="philo">Philosophy</option>
+  <option value="math">Mathematics</option>
+  <option value="compsci">Computer Science</option>
+<option value="psych">Psychology</option> 
+</select>
+<br> 
+<button>Add Another Minor</button>
+<br>
+<br>
+Choose Clusters:
+<br>
+
+Social Science 
+<select>
+<option value="none">None</option> 
+<option value="psych">Psychology</option>
+</select>
+<br>
+Humanities
+<select>
+<option value="none">None</option>
+<option value="german">German</option>
+<option value="philo">Philosophy</option>
+
+</select>
+<br>
+Natural Science and Engineering
+<select>
+<option value="none">None</option>
+  <option value="math">Mathematics</option>
+  <option value="compsci">Computer Science</option>
+</select>
+<br>
+<br>
+
+Add Previously Taken Classes:<br>
+Department:<input type="text" name="department"><br>
+Class Number: <input type="text" name="classnum"><br>
+Year Taken:<input type="text" name="yeartaken"><br>
+Semester:<br>
+<input type="radio" name="fall" value="fall">Fall<br>
+<input type="radio" name="spring" value="spring">Spring<br>
+<button>Add Class</button> <br> <br>
+<button>Add Another Class</button>
+<br>
+<br>
+<form action="schedule.html">
+<button >Schedule</button>
+</form>
+<!--<input type="submit" value="Schedule">-->
+
+
+<div>
+</body>
 </html>
