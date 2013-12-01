@@ -20,20 +20,18 @@
 	{
 		global $con;
 		$result = mysqli_query($con,"select * from major_requirements where major_id=".$majID." and track_id is NULL and req_id is NULL;");
-		
-		$requiredCourses = [];
+		var_dump($result);
 		while($row = mysqli_fetch_array($result))
 		{
-			$requiredCourses = $row[course_id];
-			//echo $row[course_id]."<br>";
+			$requiredCourses[] = $row[course_id];
+			echo $row[course_id]."<br>";
 		}
-		var_dump($requiredCourses);.
+		echo $requiredCourses;
 		return $requiredCourses;
 	}
 	
 	
 	
-	mysqli_close($con);
 ?> 
 
 <html>
@@ -44,3 +42,4 @@
 	?>
 </body>
 </html>
+<?php mysqli_close($con); ?>
