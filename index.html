@@ -48,10 +48,7 @@
     ];
     $( "#majorChooser" ).autocomplete({
       source: majList
-    });
-  });
   
-   $(function() {
     var minorList = [
       "NONE",
       "German",
@@ -62,8 +59,34 @@
     ];
     $( "#minorChooser" ).autocomplete({
       source: minorList
-    });
-  });
+  
+    var sclusterList = [
+      "NONE",
+      "Psychology"
+    ];
+    $( "#SclusterChooser" ).autocomplete({
+      source: sclusterList
+	  
+	var hclusterList = [
+      "NONE",
+      "German"
+	  "Philosophy"
+    ];
+    $( "#HclusterChooser" ).autocomplete({
+      source: hclusterList
+	  
+	var nclusterList = [
+      "NONE",
+      "Computer Science"
+	  "Mathematics"
+    ];
+    $( "#NclusterChooser" ).autocomplete({
+      source: nclusterList
+	});
+   });
+
+  
+  
  </script>
 </head>
 
@@ -97,29 +120,23 @@
 <br>
 Choose Clusters:
 <br>
+<form action="customize.php" method="post">
+  <label>Social Science</label><br> 
+  <input name'"SclusterChooser">
+<br>
 
-Social Science 
-<select>
-<option value="none">None</option> 
-<option value="psych">Psychology</option>
-</select>
+<form action="customize.php" method="post">
+  <label>Humanities</label><br> 
+  <input name'"HclusterChooser">
 <br>
-Humanities
-<select>
-<option value="none">None</option>
-<option value="german">German</option>
-<option value="philo">Philosophy</option>
 
-</select>
+<form action="customize.php" method="post">
+  <label>Natural Science and Engineering</label><br> 
+  <input name'"NclusterChooser">
 <br>
-Natural Science and Engineering
-<select>
-<option value="none">None</option>
-  <option value="math">Mathematics</option>
-  <option value="compsci">Computer Science</option>
-</select>
-<br>
-<br>
+
+ <br>
+ <button>Add</button>
 
 <input type="checkbox" checked="checked" id="wrt">
 <label for="wrt">Include WRT 105</label>
