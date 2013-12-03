@@ -1,12 +1,17 @@
 <?php
 function schedule($courses, $prereqEdges,$startYear,$startInFall,$years)
 {
-	var $years = [];
 	
-	for($i=1;$i < $years ; $i++)
+	for($i=;$i < +$years ; $i++)
 	{
-		
+		if($startInFall){
+			$years[] = array(new semester("Fall ".$startYear+$i),new semester("Spring ".$startYear +$i+ 1));
+		}
+		else{
+			$years[] = array(new semester("Spring ".$startYear+$i),new semester("Fall ".$startYear+$i));
+		} 
 	}
+	
 }
 
 class schedule
@@ -56,12 +61,20 @@ class year
 {
 	var $title;
 	var $semesters;
+	
+	function __construct(){
+		
+	}
 }
 
 class semester
 {
 	var $title;
 	var $courses;
+	
+	function __construct($title){
+		$this->title = $title;
+	}
 }
 ?>
 <html>
