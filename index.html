@@ -51,40 +51,6 @@
       source: majList
 	  });
   
-    var minorList = [
-      "NONE",
-      "German",
-      "Mathematics",
-      "Philosophy",
-      "Computer Science",
-      "Psychology",
-    ];
-    $( "#minorChooser" ).autocomplete({
-      source: minorList
-      });
-    var sclusterList = [
-      "NONE",
-      "Psychology"
-    ];
-    $( "#SclusterChooser" ).autocomplete({
-      source: sclusterList
-	 }); 
-	var hclusterList = [
-      "NONE",
-      "German"
-	  "Philosophy"
-    ];
-    $( "#HclusterChooser" ).autocomplete({
-      source: hclusterList
-	  });
-	var nclusterList = [
-      "NONE",
-      "Computer Science"
-	  "Mathematics"
-    ];
-    $( "#NclusterChooser" ).autocomplete({
-      source: nclusterList
-	});
    });
  </script>
 </head>
@@ -116,28 +82,23 @@
 <div class="checker">
 
 
-  <label>Choose your major: </label><br>
-  <input name="majorChooser">
-<br> 
-<br>
-<button>Add</button>
+	<label>Choose your major: </label><br>
+	<input name="majorChooser">
+	<br> 
+	<button>Add</button>
 
-<br>
-<br>
-<br>
+	<br>
+	<br>
 
-  <label>Choose your Minor: </label><br>
-  <input name="minorChooser">
- <br>
- <br>
- <button>Add</button>
+	<label>Choose your Minor: </label><br>
+	<input name="minorChooser">
+	<br>
+	<button>Add</button>
   
-<br> 
-<br>
-<br>
-Choose Clusters:
-<br>
-<br>
+	<br> 
+	<br>
+	Choose Clusters:
+	<br>
 
   <label>Social Science</label><br> 
   <input name'"SclusterChooser">
