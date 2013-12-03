@@ -50,6 +50,20 @@
       source: majList
     });
   });
+  
+   $(function() {
+    var minorList = [
+      "NONE",
+      "German",
+      "Mathematics",
+      "Philosophy",
+      "Computer Science",
+      "Psychology",
+    ];
+    $( "#minorChooser" ).autocomplete({
+      source: minorList
+    });
+  });
  </script>
 </head>
 
@@ -72,17 +86,13 @@
 <br>
 <br>
 <br>
-Choose Minor
-<select>
-<option value="none">None</option>
-<option value="german">German</option>
-  <option value="philo">Philosophy</option>
-  <option value="math">Mathematics</option>
-  <option value="compsci">Computer Science</option>
-<option value="psych">Psychology</option> 
-</select>
+<form action="customize.php" method="post">
+  <label>Choose your Minor: </label><br>
+  <input name="minorChooser">
+ <br>
+ <button>Add</button>
+  
 <br> 
-<button>Add</button>
 <br>
 <br>
 Choose Clusters:
