@@ -36,6 +36,21 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   
+  <form id='login' action='login.php' method='post' accept-charset='UTF-8'>
+<fieldset >
+<legend>Login</legend>
+<input type='hidden' name='submitted' id='submitted' value='1'/>
+ 
+<label for='username' >UserName:</label>
+<input type='text' name='username' id='username'  maxlength="20" />
+ 
+<label for='password' >Password:</label>
+<input type='password' name='password' id='password' maxlength="20" />
+ 
+<input type='submit' name='Submit' value='Submit' />
+ 
+</fieldset>
+</form>
  <script>
   $(function() {
     var majList = [
@@ -92,7 +107,6 @@
   <div >
     <h1><img src="res/UofRshield.png" alt="shield" style="margin-top:20px;float:left;margin-left:35%;">
     <span class="border">UR Planner<br></span></h1>
-    <p class="header">login</p>
   </div>
   <br>
 
