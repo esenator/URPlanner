@@ -1,7 +1,7 @@
 <?php
-function schedule($courses, $prereqEdges,$startYear,$startInFall,$years)
+function scheduleit($majors,$minors,$clusters, $prereqEdges,$startYear,$startInFall,$years)
 {
-	
+	//Populate semesters
 	for($i=;$i < +$years ; $i++)
 	{
 		if($startInFall){
@@ -12,6 +12,7 @@ function schedule($courses, $prereqEdges,$startYear,$startInFall,$years)
 		} 
 	}
 	
+	//Extract courses from majors/minors/clusters
 }
 
 class schedule
