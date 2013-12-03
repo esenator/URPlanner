@@ -14,15 +14,21 @@
 		var $id;
 		var $tracks;
 		var $courses;
+		var $requirements;
 		
 		function major($name)
 		{
 			global $con;
-			$result = mysqli_query($con,"select * from major_requirements where major_name=".$name);
+			$result = mysqli_query($con,"select * from majors where major_name=".$name);
 			$row = mysqli_fetch_array($result);
-			
 			$this->id=$row['major_id']
 			
+			$result = mysqli_query($con,"select * from major_requirements where major_id=".$this->id);
+			
+			while($row = mysqli_fetch_array($result))
+			{
+				$requirements[] = $row;
+			}
 		}
 	}
 	class minor
@@ -80,7 +86,7 @@
 		return $tracks;
 	}
 	
-	function enumerateReqsForTrack($majID, $trackID)
+	function enumerateReqsForMajorTrack($majID, $trackID)
 	{
 		global $con;
 		$result = mysqli_query($con,"select track_id from major_requirements where major_id=".$majID." and track_id=".$trackID);
@@ -92,6 +98,18 @@
 		return $reqs;
 	}
 	
+	
+	function enumerateReqsForMajorTrack($majID, $trackID)
+	{
+		global $con;
+		$result = mysqli_query($con,"select track_id from major_requirements where major_id=".$majID." and track_id=".$trackID);
+		while($row = mysqli_fetch_array($result))
+		{
+			$reqs[] = $row['req_id'];
+		}
+		$reqs = array_unique($reqs);
+		return $reqs;
+	}
 	
 ?> 
 

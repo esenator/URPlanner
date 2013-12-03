@@ -13,6 +13,7 @@ function scheduleit($majors,$minors,$clusters, $prereqEdges,$startYear,$startInF
 	}
 	
 	//Extract courses from majors/minors/clusters
+	
 }
 
 class schedule
