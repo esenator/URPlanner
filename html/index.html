@@ -1,0 +1,166 @@
+<html>
+<head>
+  <title>UR Planner</title>
+  <style type="text/css">
+  h1{ text-align:center:}
+	
+  .checker{margin-left:200px;
+		margin-right:200px;
+		margin-top:25px;
+		clear:both;
+		text-align:center;
+		border-radius: 15px;
+		padding:25px 50px;
+	background: rgba(255, 255, 255, 0.5);}
+  .header{float:left;
+		margin-top:50px;
+		margin-left:10px;
+		font-family: roboto, serif;}
+  .border{border-right-style:solid;
+		border-bottom-style:solid;
+		padding-bottom:25px;
+		padding-right:25px;
+		float:left;
+		margin-top:50px;
+		font-family: roboto, serif;}
+  body {
+	font-family: roboto, serif;
+	background-image: url("res/Rush.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	background-position: center;
+  }
+  </style>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+  <form id='login' action='login.php' method='post' accept-charset='UTF-8'>
+<fieldset >
+<legend>Login</legend>
+<input type='hidden' name='submitted' id='submitted' value='1'/>
+ 
+<label for='username' >UserName:</label>
+<input type='text' name='username' id='username'  maxlength="20" />
+ 
+<label for='password' >Password:</label>
+<input type='password' name='password' id='password' maxlength="20" />
+ 
+<input type='submit' name='Submit' value='Submit' />
+ 
+</fieldset>
+</form>
+ <script>
+  $(function() {
+    var majList = [
+      "Computer Science B.S.",
+      "Computer Science B.A.",
+      "Mathematics B.S.",
+      "Applied Mathematics B.S.",
+      "Mathematics (Honors) B.A.",
+      "Mathematics B.A.",
+    ];
+    $( "#majorChooser" ).autocomplete({
+      source: majList
+	  });
+  
+    var minorList = [
+      "NONE",
+      "German",
+      "Mathematics",
+      "Philosophy",
+      "Computer Science",
+      "Psychology",
+    ];
+    $( "#minorChooser" ).autocomplete({
+      source: minorList
+      });
+    var sclusterList = [
+      "NONE",
+      "Psychology"
+    ];
+    $( "#SclusterChooser" ).autocomplete({
+      source: sclusterList
+	 }); 
+	var hclusterList = [
+      "NONE",
+      "German"
+	  "Philosophy"
+    ];
+    $( "#HclusterChooser" ).autocomplete({
+      source: hclusterList
+	  });
+	var nclusterList = [
+      "NONE",
+      "Computer Science"
+	  "Mathematics"
+    ];
+    $( "#NclusterChooser" ).autocomplete({
+      source: nclusterList
+	});
+   });
+ </script>
+</head>
+
+<body>
+  <div >
+    <h1><img src="res/UofRshield.png" alt="shield" style="margin-top:20px;float:left;margin-left:35%;">
+    <span class="border">UR Planner<br></span></h1>
+  </div>
+  <br>
+
+<div class="checker">
+
+<form action="customize.php" method="post">
+  <label>Choose your major: </label><br>
+  <input id="majorChooser">
+<br> 
+<br>
+<button>Add</button>
+
+<br>
+<br>
+<br>
+
+  <label>Choose your Minor: </label><br>
+  <input id="minorChooser">
+ <br>
+ <br>
+ <button>Add</button>
+<br> 
+<br>
+<br>
+Choose Clusters:
+<br>
+<br>
+  <label>Social Science</label><br> 
+  <input id="SclusterChooser">
+<br>
+<br>
+  <label>Humanities</label><br> 
+  <input id="HclusterChooser">
+<br>
+<br>
+
+  <label>Natural Science and Engineering</label><br> 
+  <input id="NclusterChooser">
+<br>
+
+ <br>
+ <button>Add</button>
+<br>
+<br>
+<input type="checkbox" checked="checked" id="wrt">
+<label for="wrt">Include WRT 105</label>
+<br>
+<br>
+
+<input type="submit" value="Continue" />
+</form>
+
+
+
+<div>
+</body>
+</html>
