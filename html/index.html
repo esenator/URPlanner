@@ -35,23 +35,59 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  
-  <form id='login' action='login.php' method='post' accept-charset='UTF-8'>
-<fieldset >
-<legend>Login</legend>
-<input type='hidden' name='submitted' id='submitted' value='1'/>
- 
-<label for='username' >UserName:</label>
-<input type='text' name='username' id='username'  maxlength="20" />
- 
-<label for='password' >Password:</label>
-<input type='password' name='password' id='password' maxlength="20" />
- 
-<input type='submit' name='Submit' value='Submit' />
- 
-</fieldset>
-</form>
+  <script>
+	var majors 		= new Array();
+	var minors 		= new Array();
+	var clusters 	= new Array();
+	
+	function addMajor(name){
+		majors.push(name);
+		var html= "<ul>";
+		for(i=0;i<majors.length;i++){
+			html += "<li>" + majors[i] +" </li>";
+		}
+		html+="</ul>";
+		document.getElementById('majorList').value = '';
+		document.getElementById('majorList').innerHTML = html;
+	}
+	
+	function addMinor(name){
+		minors.push(name);
+		var html= "<ul>";
+		for(i=0;i<minors.length;i++){
+			html += "<li>" + minors[i] +" </li>";
+		}
+		html+="</ul>";
+		document.getElementById('minorList').value = '';
+		document.getElementById('minorList').innerHTML = html;
+	}
+	
+	function addCluster(name){
+		clusters.push(name);
+		var html= "<ul>";
+		for(i=0;i<clusters.length;i++){
+			html += "<li>" + clusters[i] +" </li>";
+		}
+		html+="</ul>";
+		document.getElementById('clusterList').value = '';
+		document.getElementById('clusterList').innerHTML = html;
+	}
+	
+	function submitStuff(){
+		var formData = {
+			"majors" = majors;
+			"minors" = minors;
+			"clusters" = clusters;
+			"startYear" = document.getElementById('startYear').value;
+			"startFall" = document.getElementById('startFall').value;
+			
+		}
+	}
+	
+  </script>
+
  <script>
+	 
   $(function() {
     var majList = [
       "Computer Science B.S.",
@@ -90,10 +126,27 @@
     
     
    });
+
  </script>
 </head>
 
 <body>
+	
+<form id='login' action='login.php' method='post' accept-charset='UTF-8'>
+	<fieldset >
+	<legend>Login</legend>
+	<input type='hidden' name='submitted' id='submitted' value='1'/>
+	
+	<label for='username' >UserName:</label>
+	<input type='text' name='username' id='username'  maxlength="20" />
+	
+	<label for='password' >Password:</label>
+	<input type='password' name='password' id='password' maxlength="20" />
+	
+	<input type='submit' name='Submit' value='Submit' />
+	</fieldset>
+</form>
+
   <div >
     <h1><img src="res/UofRshield.png" alt="shield" style="margin-top:20px;float:left;margin-left:35%;">
     <span class="border">UR Planner<br></span></h1>
@@ -102,38 +155,51 @@
 
 <div class="checker">
 
-<form action="customize.php" method="post">
-  <label>Choose your major: </label><br>
-  <input id="majorChooser">
-<button>Add</button>
 
-<br>
-<br>
+  <label>Choose your Major: </label><br>
+  <input id="majorChooser">
+<button onClick="addMajor(document.getElementById('majorChooser').value)">Add</button>
+<div id="majorList">
+	<br>
+</div>
 <br>
 
   <label>Choose your Minor: </label><br>
   <input id="minorChooser">
- <button>Add</button>
-<br> 
+ <button onClick="addMinor(document.getElementById('minorChooser').value)">Add</button>
+<div id="minorList">
+	<br>
+</div>
 <br>
-<br>
+
 Choose Clusters:
 <br>
   <input id="clusterChooser">
 
- <button>Add</button>
+ <button onClick="addCluster(document.getElementById('clusterChooser').value)">Add</button>
+<div id="clusterList">
+	<br>
+</div>
 <br>
-<br>
+
 <input type="checkbox" checked="checked" id="wrt">
 <label for="wrt">Include WRT 105</label>
 <br>
 <br>
+<input type="checkbox" checked="checked" id="startFall">
+<label for="startFall">Start in Fall</label>
+<br>
+<br>
 
-<input type="submit" value="Continue" />
-</form>
+<label for="startYear">Start year:</label><br>
+<input id="startYear">
+
+<br>
+<br>
+<button onClick="submitStuff()">Continue</button>
 
 
+</div>
 
-<div>
 </body>
 </html>
