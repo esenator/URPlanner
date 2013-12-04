@@ -8,6 +8,16 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 	
+	//Create local copy of courses
+	$result = mysqli_query($con,"select * from courses");
+	$courses[] =mysqli_fetch_array($result);
+	while($row = mysqli_fetch_array($result))
+	{
+		$courses[] = $row;
+	}
+	
+
+
 	
 	function getCourses($maj)
 	{
@@ -26,7 +36,6 @@
 			$requiredCourses[] = $row[course_id];
 			echo $row[course_id]."<br>";
 		}
-		var_dump($requiredCourses);
 		return $requiredCourses;
 	}
 	
@@ -44,7 +53,33 @@
 		return $tracks;
 	}
 	
+	function advancedCSCTable(){
+		global $con;
+		$result = mysqli_query($con,"select course_id from major_requirements where major_id=1 and req_id=8");
+		$html = "<table border=\"0\" cellpadding=\"2\">	<tr>";
+		$i = 1;
+		
+		while($row = mysqli_fetch_array($result))
+		{
+			if($i %6 == 0){
+				$html = $html."</tr><tr>";
+			}
+			
+			$c = getCourseNumber($row['course_id']);
+			$html = $html."<td><input type=\"checkbox\" name=\"".$c."\">".$c."</td>";
+			$i = $i + 1;
+		}
+		
+		$html = $html."</tr></table>";
+		echo $html;
+	}
 	
+	function getCourseNumber($id){
+		global $courses;
+		$id = $id - 1;
+		$number = $courses[$id]['department']." ".$courses[$id]['course_num'];
+		return $number;
+	}
 ?> 
 
 <html>
@@ -61,7 +96,7 @@
 			moreCourses.push(name);
 			var html= "<ul>";
 			for(i=0;i<moreCourses.length;i++){
-				html += "<li>" + moreCourses[i] +" </li>";
+				html += "<li>" + moreCourses[i].toUpperCase() +" </li>";
 			}
 			html+="</ul>";
 			document.getElementById('addcourses').value = '';
@@ -72,7 +107,7 @@
 			haveCredit.push(name);
 			var html= "<ul>";
 			for(i=0;i<haveCredit.length;i++){
-				html += "<li>" + haveCredit[i] +" </li>";
+				html += "<li>" + haveCredit[i].toUpperCase() +" </li>";
 			}
 			html+="</ul>";
 			document.getElementById('havecredit').value = '';
@@ -102,7 +137,42 @@
 		<h2>Major</h2>
 		
 		<div id="centermajor">
+			<h2>Computer Science B.S.</h2><br>
 			
+			<h3>Premajor Requirements</h3><br>
+			<b>You must take:</b> MTH 150, CSC 171, CSC 172.<br><br>
+			<b>Choose one of the following:</b><br>
+			<table border="0" cellpadding="2">
+				<tr>
+					<td><input type="radio" name="track1" value="req2" /></td>
+					<td><input type="radio" name="track1" value="req3" /></td>
+					<td><input type="radio" name="track1" value="req4" /></td>
+				</tr>
+				<tr>
+					<td>MTH 141<br>MTH 142<br>MTH 143</td>
+					<td>MTH 161<br>MTH 162</td>
+					<td>MTH 171<br>MTH 172</td>
+				</tr>
+			</table>
+			<h3>Core courses</h3><br>
+			<b>You must take: </b> CSC 173, CSC 200, CSC 242, CSC 252, CSC 254, CSC 280, CSC 282<br><br>
+			<b>Choose one of the following:</b>
+			<table border="0" cellpadding="2">
+				<tr>
+					<td><input type="radio" name="track2" value="req5" /></td>
+					<td><input type="radio" name="track2" value="req6" /></td>
+					<td><input type="radio" name="track2" value="req7" /></td>
+				</tr>
+				<tr>
+					<td>MTH 165</td>
+					<td>MTH 173</td>
+					<td>MTH 163<br>MTH 235</td>
+				</tr>
+			</table>
+			
+			<h3>Advanced Courses</h3><br>
+			<b>Choose at least 3 of:</b><br>
+			<?php advancedCSCTable() ?>
 		</div>
 		
 		<div id="centerminor">
@@ -118,12 +188,14 @@
 		<label for="addcourses">Other Courses to Add</label>
 		<input id="addcourses">
 		<button onClick="addCourse(document.getElementById('addcourses').value)">Add</button>
-		<div id="addlist"></div>
-		
+		<div id="addlist"><br></div>
+		<br>
 		<label for="havecredit">Courses you have credit for</label>
 		<input id="havecredit">
 		<button onClick="addCredit(document.getElementById('havecredit').value)">Add</button>
 		<div id="havecreditlist"></div>
+		<br><br>
+		<button onClick="location.href='schedule.html'" >Continue</button>
 	</div>
 </body>
 </html>

@@ -33,6 +33,16 @@ ul {
   text-align: left;
 }
 
+td,th {
+	text-align: center;
+}
+
+table {
+    width:90%; 
+    margin-left:15%; 
+    margin-right:15%;
+}
+
 li {
   text-align: left;
 }
@@ -42,10 +52,16 @@ li {
 	padding: 0px;
 }
 
+#right {
+	right: 0px;
+	margin-left: 30px;
+	text-align: center;
+}
 
 #center {
-	margin-left: 180px;
-	margin-right: 220px;
+	margin-left: 250px;
+	margin-right: 250px;
+	text-align: center;
 }
 
 #left, #right {
@@ -59,6 +75,5 @@ li {
 	background: rgba(255, 255, 255, .4);
 	padding: 10px;
 	padding-bottom: 20px;
-	text-align: center;
 }
 

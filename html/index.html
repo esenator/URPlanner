@@ -108,7 +108,8 @@
 	  "Mathematics",
       "German",
 	  "Philosophy",
-      "Psychology"
+      "Psychology",
+      "Ethics and Values"
     ];
     $( "#clusterChooser" ).autocomplete({
       source: clusterList
@@ -121,21 +122,7 @@
 </head>
 
 <body>
-	
-<form id='login' action='login.php' method='post' accept-charset='UTF-8'>
-	<fieldset >
-	<legend>Login</legend>
-	<input type='hidden' name='submitted' id='submitted' value='1'/>
-	
-	<label for='username' >UserName:</label>
-	<input type='text' name='username' id='username'  maxlength="20" />
-	
-	<label for='password' >Password:</label>
-	<input type='password' name='password' id='password' maxlength="20" />
-	
-	<input type='submit' name='Submit' value='Submit' />
-	</fieldset>
-</form>
+
 
   <div >
     <h1><img src="res/UofRshield.png" alt="shield" style="margin-top:20px;float:left;margin-left:35%;">
@@ -188,7 +175,7 @@ Choose Clusters:
 
 <br>
 <br>
-<button >Continue</button>
+<button onClick="location.href='customize.php'">Continue</button>
 
 
 </div>
