@@ -36,27 +36,25 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   
-  
- <script>
-  $(function() {
-    var majList = [
-      "Computer Science B.S.",
-      "Computer Science B.A.",
-      "Mathematics B.S.",
-      "Applied Mathematics B.S.",
-      "Mathematics (Honors) B.A.",
-      "Mathematics B.A.",
-    ];
-    $( "#majorChooser" ).autocomplete({
-      source: majList
-	  });
-  
-   });
- </script>
+  <script>
+	$(function() {
+		var majList = [
+		"Computer Science B.S.",
+		"Computer Science B.A.",
+		"Mathematics B.S.",
+		"Applied Mathematics B.S.",
+		"Mathematics (Honors) B.A.",
+		"Mathematics B.A."
+		];
+		$( "#majorChooser" ).autocomplete({
+			source: majList
+		});
+	});
+  </script>
 </head>
 
 <body>
-	
+	<script> document.write("test");</script>
 <form id='login' action='login.php' method='post' accept-charset='UTF-8'>
 	<fieldset >
 	<legend>Login</legend>
