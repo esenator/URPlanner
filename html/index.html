@@ -59,13 +59,13 @@
       "Mathematics B.S.",
       "Applied Mathematics B.S.",
       "Mathematics (Honors) B.A.",
-      "Mathematics B.A.",
+      "Mathematics B.A."
     ];
     $( "#majorChooser" ).autocomplete({
       source: majList
 	  });
-  
-    var minorList = [
+	  
+	var minorList = [
       "NONE",
       "German",
       "Mathematics",
@@ -76,29 +76,19 @@
     $( "#minorChooser" ).autocomplete({
       source: minorList
       });
-    var sclusterList = [
-      "NONE",
+    
+    var clusterList = [
+      "Computer Science",
+	  "Mathematics",
+      "German",
+	  "Philosophy",
       "Psychology"
     ];
-    $( "#SclusterChooser" ).autocomplete({
-      source: sclusterList
-	 }); 
-	var hclusterList = [
-      "NONE",
-      "German"
-	  "Philosophy"
-    ];
-    $( "#HclusterChooser" ).autocomplete({
-      source: hclusterList
-	  });
-	var nclusterList = [
-      "NONE",
-      "Computer Science"
-	  "Mathematics"
-    ];
-    $( "#NclusterChooser" ).autocomplete({
-      source: nclusterList
-	});
+    $( "#clusterChooser" ).autocomplete({
+      source: clusterList
+      });
+    
+    
    });
  </script>
 </head>
@@ -115,8 +105,6 @@
 <form action="customize.php" method="post">
   <label>Choose your major: </label><br>
   <input id="majorChooser">
-<br> 
-<br>
 <button>Add</button>
 
 <br>
@@ -125,29 +113,14 @@
 
   <label>Choose your Minor: </label><br>
   <input id="minorChooser">
- <br>
- <br>
  <button>Add</button>
 <br> 
 <br>
 <br>
 Choose Clusters:
 <br>
-<br>
-  <label>Social Science</label><br> 
-  <input id="SclusterChooser">
-<br>
-<br>
-  <label>Humanities</label><br> 
-  <input id="HclusterChooser">
-<br>
-<br>
+  <input id="clusterChooser">
 
-  <label>Natural Science and Engineering</label><br> 
-  <input id="NclusterChooser">
-<br>
-
- <br>
  <button>Add</button>
 <br>
 <br>
