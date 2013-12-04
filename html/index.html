@@ -40,6 +40,7 @@
 	var minors 		= new Array();
 	var clusters 	= new Array();
 	
+	
 	function addMajor(name){
 		majors.push(name);
 		var html= "<ul>";
@@ -47,7 +48,7 @@
 			html += "<li>" + majors[i] +" </li>";
 		}
 		html+="</ul>";
-		document.getElementById('majorList').value = '';
+		document.getElementById('majorChooser').value = '';
 		document.getElementById('majorList').innerHTML = html;
 	}
 	
@@ -58,7 +59,7 @@
 			html += "<li>" + minors[i] +" </li>";
 		}
 		html+="</ul>";
-		document.getElementById('minorList').value = '';
+		document.getElementById('minorChooser').value = '';
 		document.getElementById('minorList').innerHTML = html;
 	}
 	
@@ -69,19 +70,8 @@
 			html += "<li>" + clusters[i] +" </li>";
 		}
 		html+="</ul>";
-		document.getElementById('clusterList').value = '';
+		document.getElementById('clusterChooser').value = '';
 		document.getElementById('clusterList').innerHTML = html;
-	}
-	
-	function submitStuff(){
-		var formData = {
-			"majors" = majors;
-			"minors" = minors;
-			"clusters" = clusters;
-			"startYear" = document.getElementById('startYear').value;
-			"startFall" = document.getElementById('startFall').value;
-			
-		}
 	}
 	
   </script>
@@ -191,12 +181,14 @@ Choose Clusters:
 <br>
 <br>
 
-<label for="startYear">Start year:</label><br>
+<label for="startYear">Start year:</label>
 <input id="startYear">
+<label for="years">Number of years</label>
+<input id="years" value="4">
 
 <br>
 <br>
-<button onClick="submitStuff()">Continue</button>
+<button >Continue</button>
 
 
 </div>
