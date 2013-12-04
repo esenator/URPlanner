@@ -66,6 +66,24 @@ span.expandable {
 	margin-left: 30px;
 }
 
+.non-bullet {
+	list-style-type: none;
+	padding-left: 5px;
+}
+
+.non-bullet > li {
+	margin-top: 15px;
+}
+
+#directions {
+	display: block;
+}
+
+.show {
+	display: block;
+	list-style-type: disc;
+}
+
 /*#directions {
 	display: block;
 }
@@ -132,7 +150,8 @@ button {
 	list-style-type: none;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 0 0 2.5em;
+	margin-bottom: 0px;
+	padding: 0px;
 }
 
 .semester li {
@@ -169,5 +188,77 @@ button {
 	height: 1.8em;
 	line-height: 2.0em;
 	font-weight: bold;
+}
+
+
+#advisor {
+	width: 50%;
+	max-height: 75%;
+	position: fixed;
+	top: 75px;
+	right: 25%;
+	left: 25%;
+	overflow-y: auto;
+	border: 2px solid gray;
+	background: rgba(255, 255, 255, .4);
+	padding: 10px;
+	padding-bottom: 20px;
+}
+
+#student_list {
+	margin-left: 20%;
+}
+
+.addElective,
+#save,
+#print,
+#send {
+	border: 1px solid gray;
+	background-color: LightGray;
+	border-radius: 10px;
+	padding: 4px;
+	padding-bottom: 2px;
+}
+
+.addElective {
+	margin: 5px 96px 2.5em;
+}
+
+#save,
+#print,
+#send {
+	position: fixed;
+}
+
+#save {
+	right: 105px;
+	bottom: 45px;
+}
+
+#print {
+	right: 50px;
+	bottom: 45px;
+}
+
+#send {
+	right: 40px;
+	bottom: 10px;
+}
+
+.delete {
+	float: right;
+	background-color: red;
+	font-size: 18pt;
+	border: 1px solid black;
+	border-radius: 5px;
+	height: 15px;
+	width: 15px;
+	margin: 3px;
+	line-height: 11px;
+	opacity: 0.7;
+}
+
+.credits {
+	font-size: 12pt;
 }
   
