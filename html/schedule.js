@@ -4,17 +4,20 @@ $(function(){
 
 	set_collapse($("img.collapse"));
 	set_expand($("img.expand"));
-	select_course($("button"));
+	select_course($("button:not(.addElective, .delete)"));
 	
 	set_sorting($(".semester"));
+	
+	add_electives($("button.addElective"));
+	delete_elective($("button.delete"));
 });
 
 var lastSelected = "";
+var num = 1;
 
 function populateHTML() {
 	populateLeft();
 	populateCenter();
-	populateRight();
 }
 
 function populateLeft() {
@@ -127,20 +130,25 @@ function populateCenter() {
 		
 			html += '<div class="col' + col_num + '">';
 			html += '<ul class="connectedSortable semester">';
-			html += '<li class="ui-default ui-disabled semester-header">' + semester.title + '</li>';
+			var html2 = "";
+			var credits = 0;
 			for (var i in sem_courses) {
 				course = all_courses[sem_courses[i]];
-				html += '<li class="ui-default"';
+				credits += course.credits;
+				html2 += '<li class="ui-default"';
 		
 				if (course.id != null)
-					html += ' id="' + course.id + '"';
+					html2 += ' id="' + course.id + '"';
 				
 				if (course.clas != null)
-					html += '><button class="' + course.clas + '">' + course.name + ': '
+					html2 += '><button class="' + course.clas + '">' + course.name + ': '
 						+ course.title + '</button></li>';
-				else html += '>' + course.name + ': ' + course.title + '</li>';
+				else html2 += '>' + course.name + ': ' + course.title + '</li>';
 			}
-			html += '</ul>';
+			html += '<li class="ui-default ui-disabled semester-header">' + semester.title + 
+				' <span class="credits">(' + credits + ' credits)</span></li>';
+			html += html2 + '</ul>';
+			html += '<button class="addElective">Add an Elective</button>';
 			html += '</div>';
 	
 			col_num = col_num + 1;
@@ -152,13 +160,6 @@ function populateCenter() {
 	}
 	
 	document.getElementById('years').innerHTML = html;
-}
-
-function populateRight() {
-	var html = '<h2>Prerequisites</h2><p id="directions">Click on a course to see its prerequisites</p>';
-	html += '<p>NOTE: this is not yet functional. Prerequisites will be highlighted, but this panel will not change.</p>';
-	html += '<div id="prereq"></div>';
-	document.getElementById('right').innerHTML = html;
 }
 
 /**
@@ -200,12 +201,12 @@ function select_course(Button) {
 		
 		if (lastSelected == id) {	// It is already the selected one
 			toWhite(id);
-//			hideRight();
+			hideRight();
 			lastSelected = "";
 		} else {
 			toWhite(lastSelected);
 			toColor(id);
-//			showRight(id);
+			showRight(id);
 			lastSelected = id;
 		}
 	});
@@ -277,50 +278,73 @@ function toColor(id) {
 	var post;
 	for (var i in postInds){
 		post = document.getElementById(schedule.courses[postInds[i]].id);
-		post.style.background = "rgba(0, 0, 255, .5)";		// Blue
+		post.style.background = "rgba(0, 255, 0, .5)";		// Green
 	}
 }
 
 function hideRight() {
-	alert('hiding');
-	document.getElementById('prereq').slideUp();
-	document.getElementById('directions').slideDown();
+	document.getElementById('prereq').style.display = "none";
+	document.getElementById('directions').style.display = "block";
 }
 
 function showRight(id) {
-	alert('showing');
-	document.getElementById('directions').slideUp();
-	var div = document.getElementById('prereq');
+	document.getElementById('directions').style.display = "none";
+
+	var name = id.toUpperCase().substring(0,3) + " " + id.substring(3);
+	var html = name;
+	document.getElementById('course').innerHTML = html;
+	document.getElementById('course').style.backgroundColor = "rgba(0, 255, 255, 0.5)";
 	
-	html = '';
+	var index = -1;
+	for (var i in schedule.courses) {
+		if (schedule.courses[i].id == id) {
+			index = i;
+			break;
+		}
+	}
+	if (index < 0) return;
 	
-	div.innerHTML = html;
+	var course = schedule.courses[index];
 	
-	div.slideDown();
-	alert('done');
-	/*
-			<h3 id="course">CSC 172</h3>
-			
-			<h3 id="pre">Prerequisites for CSC 172:</h3>
-			<ul>
-				<li>CSC 171</li>
-				<li>MTH 150</li>
-			</ul>
-			
-			<h3 id="post">CSC 172 is a prerequisite for:</h3>
-			<ul>
-				<li>CSC 173</li>
-				<li>CSC 252</li>
-				<li>CSC 242</li>
-				<li>CSC 200</li>
-				<li>CSC 282</li>
-			</ul>
-			
-			<h3 id="co">CSC 172 must be taken concurrently with:</h3>
-			<ul>
-				<li>CSC 172 Lab</li>
-			</ul>
-	*/
+ 	html = "";
+ 	if (course.concurrent != null) {
+ 		var concur = schedule.courses[course.concurrent];
+ 		html = name + " must be taken concurrently with: ";
+		html += '<ul class="show"><li>' + concur.clas.substring(0,3) + " ";
+		html += concur.clas.substring(3) + "</li></ul>";
+ 	}
+ 	document.getElementById('concur').innerHTML = html;
+ 	document.getElementById('concur').style.backgroundColor = "rgba(255, 255, 0, .5)";
+	
+	html = "";
+	if (course.pre.length > 0)
+		html += 'Prerequisites for ' + name + ':<ul class="show">';
+	var pName;
+	for (var i in course.pre) {
+		pName = schedule.courses[course.pre[i]].clas.substring(0,3) + " ";
+		pName += schedule.courses[course.pre[i]].clas.substring(3);
+		html += '<li>' + pName + '</li>';
+	}
+	document.getElementById('pres').innerHTML = html;
+	document.getElementById('pres').style.backgroundColor = "rgba(255, 0, 0, .5)";
+
+	
+	html = "";
+	if (course.post.length > 0)
+		html += name +  ' is a prerequisite for:<ul class="show">';
+	for (var i in course.post) {
+		pName = schedule.courses[course.post[i]].clas.substring(0,3) + " ";
+		pName += schedule.courses[course.post[i]].clas.substring(3);
+		html += '<li>' + pName + '</li>';
+	}
+	document.getElementById('posts').innerHTML = html;
+	document.getElementById('posts').style.backgroundColor = "rgba(0, 255, 0, .5)";
+
+	
+	document.getElementById('prereq').style.display = "block";
+	document.getElementById('concur').style.display = "block";
+	document.getElementById('pres').style.display = "block";
+	document.getElementById('posts').style.display = "block";	
 }
 
 function set_sorting(Data) {
@@ -329,5 +353,39 @@ function set_sorting(Data) {
     Data.sortable({ placeholder: "ui-highlight" });
     
     Data.disableSelection();
+}
+
+function add_electives(Button) {
+	Button.click(function(){
+		var name = prompt("Please enter course name", "Elective");
+		var id = $(this).prev().children().last().attr('id');
+	
+		document.getElementById(id).parentNode.innerHTML += '<li class="ui-default" id="elective' +
+			(num++) + '"><button>' + name + '</button>' + '<button class="delete">-</button></li>';
+		delete_elective($("button.delete"));
+	});
+}
+
+function delete_elective(Button) {
+	Button.click(function(){
+		var message = "Are you sure you want to delete " + $(this).prev().text() + "?";
+		var confirm = window.confirm(message);
+		
+		if (confirm) {
+			var id = $(this).parent().attr('id');		
+			var html = document.getElementById(id).parentNode.innerHTML;
+		
+			var index1 = html.indexOf(id);
+ 			var html1 = html.substring(0, index1);
+ 			index1 = html1.lastIndexOf('<li');
+ 			html1 = html1.substring(0, index1);
+ 	 
+ 	 		var html2 = html.substring(index1);
+			var index2 = html2.indexOf('</li>');
+			html2 = html2.substring(index2+5);
+		
+			document.getElementById(id).parentNode.innerHTML = html1 + html2;
+		}
+	});
 }
 
