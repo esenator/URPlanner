@@ -74,6 +74,10 @@
 		document.getElementById('clusterList').innerHTML = html;
 	}
 	
+	function POSTtoCustomize(){
+		$.post( "customize.php", { "majors": majors, "minors" : minors, "clusters" : clusters } );
+	}
+	
   </script>
 
  <script>
@@ -175,7 +179,7 @@ Choose Clusters:
 
 <br>
 <br>
-<button onClick="location.href='customize.php'">Continue</button>
+<button onClick="POSTtoCustomize()">Continue</button>
 
 
 </div>

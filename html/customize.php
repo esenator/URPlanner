@@ -13,9 +13,10 @@
 	$courses[] =mysqli_fetch_array($result);
 	while($row = mysqli_fetch_array($result))
 	{
-		$courses[] = $row;
+		$courses[$row['department'].$row['course_num']] = $row;
+		
 	}
-	
+	var_dump($courses['CSC171']);
 
 
 	
