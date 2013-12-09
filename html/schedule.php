@@ -42,6 +42,7 @@
 		$isFall = true;
 		for($i=0; $i<$years*2; $i++){
 			$sem = new Semester();
+			$limit = 19;
 			
 			//Find courses that don't have awaiting prereqs
 			$canTake = getTakeableCourses($isFall);
@@ -50,6 +51,18 @@
 			//(So that it can be popped)
 			$canTake = sortByPrereqs($canTake);
 			
+			$withinLimit = true;
+			while($withinLimit and count($canTake)>0){
+				$c = array_pop($canTake);
+				
+				$ccredits = $c->credits;
+				if(count($c->concurrent)>0){
+					//ADD CODEHERE
+				}
+			}
+			
+			//Add this semester to the main array.
+			$semesters[] = $sem;
 			$isFall = !$isFall;
 		}
 	}
@@ -111,9 +124,9 @@
 		var $id;
 		var $clas;
 		var $credits;
-		var $concurrent;
-		var $pre;
-		var $post;
+		var $concurrent = array();
+		var $pre = array();
+		var $post = array();
 	}
 	
 	$a = new Year();
