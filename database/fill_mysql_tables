@@ -1958,4 +1958,57 @@ INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `
 INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('149', '139', '133');
 INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('150', '140', '133');
 
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('143', '0', 'PHL', '223', 'Social and Political Philosophy', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('144', '0', 'PHL', '224', 'History of Ethics', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('145', '0', 'PHL', '225', 'Ethical Decisions in Medicine', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('146', '0', 'PHL', '226', 'Philosophy of Law', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('147', '0', 'PHL', '227', 'The Meaning of Life', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('148', '0', 'PHL', '228', 'Public Health Ethics', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('149', '0', 'PHL', '229', 'Philosophy of Education', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('150', '1', 'PHL', '242', 'Metaphysics', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('151', '0', 'PHL', '243', 'Theory of Knowledge', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('152', '0', 'PHL', '244', 'Philosophy of Mind', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('153', '0', 'PHL', '247', 'Philosophy of Language', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('154', '0', 'PHL', '249', 'Formal Semantics', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('155', '1', 'PHL', '251', 'Philosophy of Biology', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('156', '1', 'PHL', '252', 'Philosophy of Science', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('157', '0', 'PHL', '260', 'Topics in Philosophical Theology', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('158', '0', 'PHL', '262', 'French Philosophy Since 1960', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('159', '0', 'PHL', '263', 'Jewish Philosophy', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('160', '0', 'PHL', '264', 'Modern Jewish Philosophy', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('161', '1', 'PHL', '265', 'Select Topics in Ancient Philosophy', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('162', '1', 'PHL', '266', 'Rationalism', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('163', '0', 'PHL', '300', 'Seminar for Majors', '4');
+INSERT INTO `URPlanner`.`courses` (`course_id`, `has_pre-reqs`, `department`, `course_num`, `course_name`, `credits`) VALUES ('164', '0', 'PHL', '312', 'Neuroethics', '4');
+
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('215', '143', '1', '1', '0', '1', '0', '1', '10:00:00', '10:50:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('216', '144', '2', '1', '0', '1', '0', '1', '11:00:00', '11:50:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('217', '145', '2', '0', '1', '0', '1', '0', '14:00:00', '15:15:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('218', '146', '2', '1', '0', '1', '0', '1', '9:00:00', '9:50:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('219', '147', '2', '0', '1', '0', '1', '0', '16:50:00', '18:05:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('220', '148', '1', '0', '1', '0', '1', '0', '9:40:00', '10:55:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('221', '149', '2', '1', '0', '1', '0', '0', '12:30:00', '13:45:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('222', '150', '1', '0', '1', '0', '1', '0', '12:30:00', '13:45:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('223', '151', '1', '0', '1', '0', '1', '0', '16:50:00', '18:05:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('224', '152', '2', '0', '1', '0', '1', '0', '12:30:00', '13:45:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('225', '153', '2', '1', '0', '1', '0', '0', '12:30:00', '13:45:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('226', '154', '2', '0', '1', '0', '1', '0', '14:00:00', '15:15:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('227', '155', '2', '0', '1', '0', '1', '0', '15:25:00', '16:40:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('228', '156', '1', '1', '0', '1', '0', '0', '12:30:00', '13:45:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('229', '157', '2', '0', '0', '0', '1', '0', '14:00:00', '16:40:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('230', '158', '2', '1', '0', '0', '0', '0', '16:50:00', '19:30:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('231', '159', '1', '0', '1', '0', '1', '0', '14:00:00', '15:15:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('232', '160', '2', '0', '1', '0', '1', '0', '12:30:00', '13:45:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('233', '161', '1', '0', '1', '0', '0', '0', '16:50:00', '19:30:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('234', '162', '1', '0', '1', '0', '1', '0', '11:05:00', '12:20:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('235', '163', '2', '0', '1', '0', '1', '0', '15:25:00', '16:40:00');
+INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('236', '164', '2', '0', '1', '0', '1', '0', '9:40:00', '10:55:00');
+
+INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('151', '133', '150');
+UPDATE `URPlanner`.`prerequisites` SET `pre_course_id`='133', `post_course_id`='139' WHERE `row_id`='149';
+UPDATE `URPlanner`.`prerequisites` SET `pre_course_id`='133', `post_course_id`='140' WHERE `row_id`='150';
+INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('152', '133', '155');
+INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('153', '133', '156');
+INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('154', '137', '161');
+INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('155', '138', '162');
 
