@@ -41,6 +41,7 @@
 		
 		$isFall = true;
 		for($i=0; $i<$years*2; $i++){
+			$sem = new Semester();
 			
 			//Find courses that don't have awaiting prereqs
 			$canTake = getTakeableCourses($isFall);
