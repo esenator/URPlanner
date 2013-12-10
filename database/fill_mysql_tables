@@ -2160,4 +2160,4 @@ INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_
 INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('224', '16', '135', '1', '29');
 INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('225', '16', '136', '1', '29');
 INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('226', '16', '137', '1', '29');
-INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`) VALUES ('227', '16', '138', '1');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, 'req_id') VALUES ('227', '16', '138', '1', '29');
