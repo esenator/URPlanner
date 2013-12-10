@@ -4,9 +4,9 @@ $(function(){
 
 	set_collapse($("img.collapse"));
 	set_expand($("img.expand"));
-	select_course($("button:not(.addElective, .delete)"));
 	
 	set_sorting($(".semester"));
+	select_courses($(".semester>li"));
 	
 	add_electives($("button.addElective"));
 	delete_elective($("button.delete"));
@@ -14,6 +14,8 @@ $(function(){
 
 var lastSelected = "";
 var num = 1;
+var from = null;
+var dragged = false;
 
 function populateHTML() {
 	populateLeft();
@@ -82,7 +84,6 @@ function populateLeftSection(lst) {
 			html += '</ul></li>';
 		}
 		
-		
 		html += '</ul></div></p>';
 	}
 	
@@ -135,15 +136,18 @@ function populateCenter() {
 			for (var i in sem_courses) {
 				course = all_courses[sem_courses[i]];
 				credits += course.credits;
-				html2 += '<li class="ui-default"';
+
+				html2 += '<li class="ui-default';
+				if (course.clas != null)
+					html2 += ' ' + course.clas;
+			
+				html2 += '" title="' + course.credits + ' credits"';
 		
 				if (course.id != null)
 					html2 += ' id="' + course.id + '"';
 				
-				if (course.clas != null)
-					html2 += '><button class="' + course.clas + '">' + course.name + ': '
-						+ course.title + '</button></li>';
-				else html2 += '>' + course.name + ': ' + course.title + '</li>';
+				
+				html2 += '>' + course.name + ': ' + course.title + '</li>';
 			}
 			html += '<li class="ui-default ui-disabled semester-header">' + semester.title + 
 				' <span class="credits">(' + credits + ' credits)</span></li>';
@@ -190,25 +194,6 @@ function set_expand(DownArrow){
 		
 		$(this).unbind("click");
 		set_collapse($(this));
-	});
-}
-
-function select_course(Button) {
-	Button.click(function() {
-		var clas = $(this).attr('class');
-		var id = clas.toLowerCase();
-		var curr = document.getElementById(id).style.background;
-		
-		if (lastSelected == id) {	// It is already the selected one
-			toWhite(id);
-			hideRight();
-			lastSelected = "";
-		} else {
-			toWhite(lastSelected);
-			toColor(id);
-			showRight(id);
-			lastSelected = id;
-		}
 	});
 }
 
@@ -352,17 +337,89 @@ function set_sorting(Data) {
 	Data.sortable({ connectWith: ".connectedSortable" });
     Data.sortable({ placeholder: "ui-highlight" });
     
+    Data.droppable({ drop: function( event, ui ) {
+    		dragged = true;
+    		recalculate_credits($(this), $(ui.draggable).attr('title'));
+    	}
+    });
+    
     Data.disableSelection();
+}
+
+function select_courses(Li) {
+	Li.mousedown(function() {
+		if ($(this).attr('class').indexOf('semester-header') < 0) {
+			from = $(this).parent().children().first().children().first();	// The span of credits
+		}
+	});
+	
+	Li.click(function() {
+		if (($(this).attr('class').indexOf('semester-header') < 0) && !dragged) {			
+			var clas = $(this).attr('class');
+			var index1 = clas.indexOf(' ');
+			var clas = clas.substring(index1+1);
+			var id = clas.toLowerCase();
+			var curr = document.getElementById(id).style.background;
+		
+			if (lastSelected == id) {	// It is already the selected one
+				toWhite(id);
+				hideRight();
+				lastSelected = "";
+			} else {
+				toWhite(lastSelected);
+				toColor(id);
+				showRight(id);
+				lastSelected = id;
+			}
+		} else {
+			dragged = false;
+		}
+	});
+}
+
+function recalculate_credits(Semester, Title) {
+	var to = Semester.children().first().children().first();
+	var fromCredits = 0;
+	var toCredits = 0;
+	var index = Title.indexOf(' credits');
+	var credits = +(Title.substring(0, index));
+	
+
+	for (var i in from.parent().siblings()) {
+		var li = from.parent().siblings()[i];
+		
+		if (li.title) {
+			index = li.title.indexOf(' credits');
+			if (index > 0) fromCredits += +(li.title.substring(0, index));
+		}
+	}
+
+	for (var i in to.parent().siblings()) {
+		var li = to.parent().siblings()[i];
+		
+		if (li.title) {
+			index = li.title.indexOf(' credits');
+			if (index > 0) toCredits += +(li.title.substring(0, index));
+		}
+	}
+	
+	toCredits += credits;
+	fromCredits -= (2*credits);
+	
+	from.html("(" + fromCredits + " credits)");
+	to.html("(" + toCredits + " credits)");
 }
 
 function add_electives(Button) {
 	Button.click(function(){
 		var name = prompt("Please enter course name", "Elective");
-		var id = $(this).prev().children().last().attr('id');
+		if (name != null) {	// They did not select Cancel
+			var id = $(this).prev().children().last().attr('id');
 	
-		document.getElementById(id).parentNode.innerHTML += '<li class="ui-default" id="elective' +
-			(num++) + '"><button>' + name + '</button>' + '<button class="delete">-</button></li>';
-		delete_elective($("button.delete"));
+			document.getElementById(id).parentNode.innerHTML += '<li class="ui-default" id="elective' +
+				(num++) + '"><button>' + name + '</button>' + '<button class="delete">-</button></li>';
+			delete_elective($("button.delete"));
+		}
 	});
 }
 
