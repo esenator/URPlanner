@@ -124,51 +124,43 @@
 
 <div class="checker">
 
-
-  <label>Choose your Major: </label><br>
-  <input id="majorChooser">
-<button onClick="addMajor(document.getElementById('majorChooser').value)">Add</button>
-<div id="majorList">
+<form name="frm" action="customize.php" method="POST">
+	  <label>Choose your Major: </label><br>
+	  <input id="majorChooser" type = "text" />
+	<div id="majorList">
+		<br>
+	</div>
 	<br>
-</div>
-<br>
 
-  <label>Choose your Minor: </label><br>
-  <input id="minorChooser">
- <button onClick="addMinor(document.getElementById('minorChooser').value)">Add</button>
-<div id="minorList">
+	  <label>Choose your Minor: </label><br>
+	<input id="minorChooser" type = "text" />
+	<div id="minorList">
+		<br>
+	</div>
 	<br>
-</div>
-<br>
 
-Choose Clusters:
-<br>
-  <input id="clusterChooser">
-
- <button onClick="addCluster(document.getElementById('clusterChooser').value)">Add</button>
-<div id="clusterList">
+	Choose Clusters:
 	<br>
-</div>
-<br>
+	  <input id="clusterChooser">
+	<br>
+	<button onClick="addCluster(document.getElementById('clusterChooser').value)">Add</button>
+	<div id="clusterList">
+		<br>
+	</div>
+	<br>
 
-<input type="checkbox" checked="checked" id="wrt">
-<label for="wrt">Include WRT 105</label>
-<br>
-<br>
-<input type="checkbox" checked="checked" id="startFall">
-<label for="startFall">Start in Fall</label>
-<br>
-<br>
+	<br>
+	<input type="checkbox" checked="checked" id="startFall">
+	<label for="startFall">Start in Fall</label>
+	<br>
+	<br>
 
-<label for="startYear">Start year:</label>
-<input id="startYear">
-<label for="years">Number of years</label>
-<input id="years" value="4">
 
-<br>
-<br>
-<button onClick="POSTtoCustomize()">Continue</button>
 
+	<br>
+	<br>
+	<input type="submit" value="Continue">
+</form>
 
 </div>
 

@@ -15,21 +15,8 @@
 	$minors   = array();
 	$clusters = array();
 	
-	//Handle Params
-	for($i=0;$i<count($_POST['majors']);$i++){
-		$result = mysqli_query($con,"select major_id from majors where major_name=".$_POST['majors'][$i]);
-		$majors[] = mysqli_fetch_array($result)['major_id'];
-	}
-	
-	for($i=0;$i<count($_POST['minors']);$i++){
-		$result = mysqli_query($con,"select minor_id from minors where minor_name=".$_POST['minors'][$i]);
-		$majors[] = mysqli_fetch_array($result)['minor_id'];
-	}
-	
-	for($i=0;$i<count($_POST['clusters']);$i++){
-		$result = mysqli_query($con,"select cluster_id from clusters where cluster_name=".$_POST['clusters'][$i]);
-		$majors[] = mysqli_fetch_array($result)['major_id'];
-	}
+		
+	var_dump($_POST);
 	
 	//Create local copy of courses
 	$result = mysqli_query($con,"select * from courses");
@@ -39,7 +26,7 @@
 		$courses[$row['course_id']] = $row;
 		
 	}
-
+	
 	//Setting up majors
 	function setUpMajors(){
 		for ($i=0;$i<count($majors);$i++){
@@ -51,13 +38,13 @@
                 	<li><a href=\"#tab3\">Advanced Courses</a></li>
                 </ul>";
 			echo "<div id = \"tab1\">";
-			majorPreTab($majors[$i]);
+			//majorPreTab($majors[$i]);
 			echo "</div>";
 			echo "<div id = \"tab2\">";
-			majorCoreTab($majors[$i]);
+			//majorCoreTab($majors[$i]);
 			echo "</div>";
 			echo "<div id = \"tab3\">";
-			majorAdvancedTab($majors[$i]);
+			//majorAdvancedTab($majors[$i]);
 			echo "</div>";
 			echo "</div>";
 		}
@@ -102,11 +89,11 @@
 		$result = mysqli_query($con,"select course_id from major_requirements where ".$sqlwheres);
 		while($row = mysqli_fetch_array($result))
 		{
-			$cs[] = $row['track_id'];
+			$cs[] = $row['course_id'];
 		}
-		$tracks = array_unique($tracks);
+		$cs = array_unique($tracks);
 		
-		return $tracks;
+		return $cs;
 	}
 	
 	function majorPreTab($maj_id){
@@ -196,71 +183,8 @@
 		<h2>Major</h2>
 		
 		<div id="centermajor">
-			<?php setUpMajors(); ?>
-				<div id="tab1">
-                	<h3>You must take the following courses:</h3>
-                	<ul>
-                		<li>MTH 150: Discrete Mathematics</li>
-                		<li>CSC 171: The Science of Programming</li>
-                		<li>CSC 172: The Science of Data Structures</li>
-                	</ul>
-                		
-                	<h3>Please select one of the following options:</h3>
-                	<input type="radio" name="track1" value="req1" checked="true">
-                		MTH 161: Calculus IA
-                		<br />
-                		<span>MTH 162: Calculus IIA</span>
-                	</input>
-                	<br />
-                	<br />
-            		<input type="radio" name="track1" value="req2">
-            			MTH 171: Honors Calculus I
-            			<br />
-                		<span>MTH 172: Honors Calculus II</span>
-                	</input>
-            		<br />
-            		<br />
-            		<input type="radio" name="track1" value="req3">
-            			MTH 141: Calculus I
-                		<br />
-                		<span>MTH 142: Calculus II</span>
-                		<br />
-            			<span>MTH 143: Calculus III</span>
-            		</input>
-            	</div>
-                	
-                <div id="tab2">
-            		<h3>You must take the following courses:</h3>
-            		<ul>
-            			<li>CSC 173: Computation and Formal Systems</li>
-            			<li>CSC 242: Artificial Intelligence</li>
-                		<li>CSC 252: Computer Organization</li>
-                		<li>CSC 254: Programming Language Desing & Impletation</li>
-                		<li>CSC 280: Computer Models and Limitations</li>
-            			<li>CSC 282: Design and Analysis of Efficient Algorithms</li>
-            			<li>CSC 200: Undergraduate Problem Seminar</li>
-            		</ul>
-                		
-                	<h3>Please select one of the following options:</h3>
-                	<input type="radio" name="track2" value="req4" checked="true">
-            			MTH 165: Linear Algebra with Differential Equations
-            		</input>
-            		<br />
-            		<input type="radio" name="track2" value="req5">
-                		MTH 173: Honors Calculus III
-                	</input>
-                	<br />
-            		<input type="radio" name="track2" value="req6">
-            			MTH 163: Ordinary Differential Equations I
-            			<br />
-            			<span>MTH 235: Linear Algebra</span>
-                	</input>
-                </div>
-            	
-            	<div id="tab3">
-            		<h3 class="3">Please select three of the following options:</h3>
-                	<?php advancedCSCTable() ?>
-            	</div>
+			<?php //setUpMajors(); ?>
+				
 		</div>
 		
 		<div id="centerminor">
