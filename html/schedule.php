@@ -127,6 +127,7 @@
 		var $concurrent = array();
 		var $pre = array();
 		var $post = array();
+		var $weight =0;
 	}
 	
 	$a = new Year();

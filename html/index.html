@@ -75,7 +75,10 @@
 	}
 	
 	function POSTtoCustomize(){
-		$.post( "customize.php", { "majors": majors, "minors" : minors, "clusters" : clusters } );
+		$.post( "test.php", { "majors[]": majors, "minors[]": minors, "clusters[]": clusters } )
+		 .done(function( data ) {
+	alert( "Data Loaded: " + data );
+	});
 	}
 	
   </script>
@@ -84,36 +87,21 @@
 	 
   $(function() {
     var majList = [
-      "Computer Science B.S.",
-      "Computer Science B.A.",
-      "Mathematics B.S.",
-      "Applied Mathematics B.S.",
-      "Mathematics (Honors) B.A.",
-      "Mathematics B.A."
+      "Computer Science B.S.","Computer Science B.A.","Mathematics (Honors) B.A.","Mathematics B.S.","Mathematics B.A.","Applied Mathematics B.S.","Philosophy B.A.","Psychology B.A.","German"
     ];
     $( "#majorChooser" ).autocomplete({
       source: majList
 	  });
 	  
 	var minorList = [
-      "NONE",
-      "German",
-      "Mathematics",
-      "Philosophy",
-      "Computer Science",
-      "Psychology",
+      "Computer Science","Mathematics","Philosophy of Science","Ethics","History of Philosophy","Psychology","Psychology as a Natural Science","Psychology as a Social Science","Clinical Psychology","Health Psychology","Organizational Psychology","Social and Emotional Development","German"
     ];
     $( "#minorChooser" ).autocomplete({
       source: minorList
       });
     
     var clusterList = [
-      "Computer Science",
-	  "Mathematics",
-      "German",
-	  "Philosophy",
-      "Psychology",
-      "Ethics and Values"
+      "Foundations of Computer Science","Computer Systems","Computer Science and Art","Algorithms","Human Computer Interaction","Computer Graphics","Computational Problem Solving","Management of Data","Advanced Mathematics","Introduction to Calculus and Contemporary Mathematics","Honors Calculus","Calculus and Mathematics","Analysis and Calculus","Calculus and Probability","Ethics and Values","History of Philosophy","Knowledge, Mind and Nature","Philosophy and Law","Philosophy and Teaching Internship","Logic","Psychology as a Social Science","Psychopathology","Psychology of Motivation","Social Psychology","Organizational Psychology","Psychology of Developmental Disabilities","Personality Psychology","Social and Emotional Development","Introduction to German Language and Culture","Intermediate German Language and Culture","Advanced German Language & Culture"
     ];
     $( "#clusterChooser" ).autocomplete({
       source: clusterList

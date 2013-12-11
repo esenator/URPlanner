@@ -139,7 +139,7 @@
 		<script src="customize.js" type="text/javascript"></script>
         <script>
 			$(function() {
-			$( ".tabs" ).tabs();
+				$( ".tabs" ).tabs();
 			});
 		</script>
     </head>
@@ -291,6 +291,19 @@
                 </div>
         
         <button>Continue</button>
+        <div id="right">
+		<label for="addcourses">Other Courses to Add</label>
+		<input id="addcourses">
+		<button onClick="addCourse(document.getElementById('addcourses').value)">Add</button>
+		<div id="addlist"><br></div>
+		<br>
+		<label for="havecredit">Courses you have credit for</label>
+		<input id="havecredit">
+		<button onClick="addCredit(document.getElementById('havecredit').value)">Add</button>
+		<div id="havecreditlist"></div>
+		<br><br>
+		<button onClick="location.href='schedule.html'" >Continue</button>
+		</div>
 	</body>
 </html>
 <?php mysqli_close($con); ?>
