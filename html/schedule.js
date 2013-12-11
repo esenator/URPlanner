@@ -9,7 +9,8 @@ $(function(){
 	select_courses($(".semester>li"));
 	
 	add_electives($("button.addElective"));
-	delete_elective($("button.delete"));
+//	delete_elective($("button.delete"));
+	print($("#print"));
 });
 
 var lastSelected = "";
@@ -198,6 +199,8 @@ function set_expand(DownArrow){
 }
 
 function toWhite(id) {
+	if (id == "") return;
+	
 	var index = -1;
 	for (var i in schedule.courses) {
 		if (schedule.courses[i].id == id) {
@@ -206,29 +209,32 @@ function toWhite(id) {
 		}
 	}
 	
-	if (index < 0) return;
-	
-	var course = document.getElementById(id);
-	course.style.background = "rgba(255, 255, 255, .5)";
-	
-	if (schedule.courses[index].concurrent != null) {
-		var coIndex = schedule.courses[index].concurrent;
-		var co = document.getElementById(schedule.courses[coIndex].id);
-		co.style.background = "rgba(255, 255, 255, .5)";
-	}
-	
-	var preInds = schedule.courses[index].pre;
-	var pre;
-	for (var i in preInds) {
-		pre = document.getElementById(schedule.courses[preInds[i]].id);
-		pre.style.background = "rgba(255, 255, 255, .5)";
-	}
-	
-	var postInds = schedule.courses[index].post;
-	var post;
-	for (var i in postInds){
-		post = document.getElementById(schedule.courses[postInds[i]].id);
-		post.style.background = "rgba(255, 255, 255, .5)";
+	if (index < 0) {		// This is not a course from the JSONP file, so no data on prereqs
+ 		var course = document.getElementById(id);
+ 		course.style.background = "rgba(255, 255, 255, .5)";
+	} else {		// This is a course from a JSONP file
+		var course = document.getElementById(id);
+		course.style.background = "rgba(255, 255, 255, .5)";
+		
+		if (schedule.courses[index].concurrent != null) {
+			var coIndex = schedule.courses[index].concurrent;
+			var co = document.getElementById(schedule.courses[coIndex].id);
+			co.style.background = "rgba(255, 255, 255, .5)";
+		}
+		
+		var preInds = schedule.courses[index].pre;
+		var pre;
+		for (var i in preInds) {
+			pre = document.getElementById(schedule.courses[preInds[i]].id);
+			pre.style.background = "rgba(255, 255, 255, .5)";
+		}
+		
+		var postInds = schedule.courses[index].post;
+		var post;
+		for (var i in postInds){
+			post = document.getElementById(schedule.courses[postInds[i]].id);
+			post.style.background = "rgba(255, 255, 255, .5)";
+		}
 	}
 }
 
@@ -241,29 +247,32 @@ function toColor(id) {
 		}
 	}
 	
-	if (index < 0) return;
-	
-	var course = document.getElementById(id);
-	course.style.background = "rgba(0, 255, 255, .5)";		// Cyan
-	
-	if (schedule.courses[index].concurrent != null) {
-		var coIndex = schedule.courses[index].concurrent;
-		var co = document.getElementById(schedule.courses[coIndex].id);
-		co.style.background = "rgba(255, 255, 0, .5)";		// Yellow
-	}
-	
-	var preInds = schedule.courses[index].pre;
-	var pre;
-	for (var i in preInds) {
-		pre = document.getElementById(schedule.courses[preInds[i]].id);
-		pre.style.background = "rgba(255, 0, 0, .5)";		// Red
-	}
-	
-	var postInds = schedule.courses[index].post;
-	var post;
-	for (var i in postInds){
-		post = document.getElementById(schedule.courses[postInds[i]].id);
-		post.style.background = "rgba(0, 255, 0, .5)";		// Green
+	if (index < 0) {		// This is not a course from the JSONP file, so no data on prereqs
+		var course = document.getElementById(id);
+		course.style.background = "rgba(0, 255, 255, .5)";
+	} else {		// This is a course from a JSONP file
+		var course = document.getElementById(id);
+		course.style.background = "rgba(0, 255, 255, .5)";		// Cyan
+		
+		if (schedule.courses[index].concurrent != null) {
+			var coIndex = schedule.courses[index].concurrent;
+			var co = document.getElementById(schedule.courses[coIndex].id);
+			co.style.background = "rgba(255, 255, 0, .5)";		// Yellow
+		}
+		
+		var preInds = schedule.courses[index].pre;
+		var pre;
+		for (var i in preInds) {
+			pre = document.getElementById(schedule.courses[preInds[i]].id);
+			pre.style.background = "rgba(255, 0, 0, .5)";		// Red
+		}
+		
+		var postInds = schedule.courses[index].post;
+		var post;
+		for (var i in postInds) {
+			post = document.getElementById(schedule.courses[postInds[i]].id);
+			post.style.background = "rgba(0, 255, 0, .5)";		// Green
+		}
 	}
 }
 
@@ -275,61 +284,73 @@ function hideRight() {
 function showRight(id) {
 	document.getElementById('directions').style.display = "none";
 
-	var name = id.toUpperCase().substring(0,3) + " " + id.substring(3);
-	var html = name;
-	document.getElementById('course').innerHTML = html;
-	document.getElementById('course').style.backgroundColor = "rgba(0, 255, 255, 0.5)";
-	
-	var index = -1;
-	for (var i in schedule.courses) {
-		if (schedule.courses[i].id == id) {
-			index = i;
-			break;
+	if (id.indexOf('elective') < 0) {		// This is a required course
+		var name = id.toUpperCase().substring(0,3) + " " + id.substring(3);
+		var html = name;
+		document.getElementById('course').innerHTML = html;
+		document.getElementById('course').style.backgroundColor = "rgba(0, 255, 255, 0.5)";
+		
+		var index = -1;
+		for (var i in schedule.courses) {
+			if (schedule.courses[i].id == id) {
+				index = i;
+				break;
+			}
 		}
+		if (index < 0) return;		// ERROR: it was not found
+		
+		var course = schedule.courses[index];
+		
+		html = "";
+		if (course.concurrent != null) {
+			var concur = schedule.courses[course.concurrent];
+			html = name + " must be taken concurrently with: ";
+			html += '<ul class="show"><li>' + concur.clas.substring(0,3) + " ";
+			html += concur.clas.substring(3) + "</li></ul>";
+		}
+		document.getElementById('concur').innerHTML = html;
+		document.getElementById('concur').style.backgroundColor = "rgba(255, 255, 0, .5)";
+		
+		html = "";
+		if (course.pre.length > 0)
+			html += 'Prerequisites for ' + name + ':<ul class="show">';
+		var pName;
+		for (var i in course.pre) {
+			pName = schedule.courses[course.pre[i]].clas.substring(0,3) + " ";
+			pName += schedule.courses[course.pre[i]].clas.substring(3);
+			html += '<li>' + pName + '</li>';
+		}
+		document.getElementById('pres').innerHTML = html;
+		document.getElementById('pres').style.backgroundColor = "rgba(255, 0, 0, .5)";
+	
+		
+		html = "";
+		if (course.post.length > 0)
+			html += name +  ' is a prerequisite for:<ul class="show">';
+		for (var i in course.post) {
+			pName = schedule.courses[course.post[i]].clas.substring(0,3) + " ";
+			pName += schedule.courses[course.post[i]].clas.substring(3);
+			html += '<li>' + pName + '</li>';
+		}
+		document.getElementById('posts').innerHTML = html;
+		document.getElementById('posts').style.backgroundColor = "rgba(0, 255, 0, .5)";
+	
+		
+		document.getElementById('prereq').style.display = "block";
+		document.getElementById('concur').style.display = "block";
+		document.getElementById('pres').style.display = "block";
+		document.getElementById('posts').style.display = "block";	
+	} else {		// This is an elective
+		var name = document.getElementById(id).textContent;
+		var html = name.substring(0, name.length-1);
+		document.getElementById('course').innerHTML = html;
+		document.getElementById('course').style.backgroundColor = "rgba(0, 255, 255, 0.5)";
+		
+		document.getElementById('concur').style.display = "none";
+		document.getElementById('pres').style.display = "none";
+		document.getElementById('posts').style.display = "none";	
+		document.getElementById('prereq').style.display = "block";
 	}
-	if (index < 0) return;
-	
-	var course = schedule.courses[index];
-	
- 	html = "";
- 	if (course.concurrent != null) {
- 		var concur = schedule.courses[course.concurrent];
- 		html = name + " must be taken concurrently with: ";
-		html += '<ul class="show"><li>' + concur.clas.substring(0,3) + " ";
-		html += concur.clas.substring(3) + "</li></ul>";
- 	}
- 	document.getElementById('concur').innerHTML = html;
- 	document.getElementById('concur').style.backgroundColor = "rgba(255, 255, 0, .5)";
-	
-	html = "";
-	if (course.pre.length > 0)
-		html += 'Prerequisites for ' + name + ':<ul class="show">';
-	var pName;
-	for (var i in course.pre) {
-		pName = schedule.courses[course.pre[i]].clas.substring(0,3) + " ";
-		pName += schedule.courses[course.pre[i]].clas.substring(3);
-		html += '<li>' + pName + '</li>';
-	}
-	document.getElementById('pres').innerHTML = html;
-	document.getElementById('pres').style.backgroundColor = "rgba(255, 0, 0, .5)";
-
-	
-	html = "";
-	if (course.post.length > 0)
-		html += name +  ' is a prerequisite for:<ul class="show">';
-	for (var i in course.post) {
-		pName = schedule.courses[course.post[i]].clas.substring(0,3) + " ";
-		pName += schedule.courses[course.post[i]].clas.substring(3);
-		html += '<li>' + pName + '</li>';
-	}
-	document.getElementById('posts').innerHTML = html;
-	document.getElementById('posts').style.backgroundColor = "rgba(0, 255, 0, .5)";
-
-	
-	document.getElementById('prereq').style.display = "block";
-	document.getElementById('concur').style.display = "block";
-	document.getElementById('pres').style.display = "block";
-	document.getElementById('posts').style.display = "block";	
 }
 
 function set_sorting(Data) {
@@ -354,11 +375,12 @@ function select_courses(Li) {
 	});
 	
 	Li.click(function() {
-		if (($(this).attr('class').indexOf('semester-header') < 0) && !dragged) {			
+		if (($(this).attr('class').indexOf('semester-header') < 0) && !dragged) {
 			var clas = $(this).attr('class');
 			var index1 = clas.indexOf(' ');
 			var clas = clas.substring(index1+1);
 			var id = clas.toLowerCase();
+			
 			var curr = document.getElementById(id).style.background;
 		
 			if (lastSelected == id) {	// It is already the selected one
@@ -379,48 +401,76 @@ function select_courses(Li) {
 
 function recalculate_credits(Semester, Title) {
 	var to = Semester.children().first().children().first();
-	var fromCredits = 0;
-	var toCredits = 0;
-	var index = Title.indexOf(' credits');
-	var credits = +(Title.substring(0, index));
 	
-
-	for (var i in from.parent().siblings()) {
-		var li = from.parent().siblings()[i];
+	if (to.parent().text() != from.parent().text()) {	// It is being moved between semesters
+		var fromCredits = 0;
+		var toCredits = 0;
+		var index = Title.indexOf(' credits');
+		var credits = +(Title.substring(0, index));
 		
-		if (li.title) {
-			index = li.title.indexOf(' credits');
-			if (index > 0) fromCredits += +(li.title.substring(0, index));
+		for (var i = 0; i < from.parent().siblings().length; i++) {
+			var li = from.parent().siblings()[i];
+			if (typeof li == "object") {
+				if (li.title) {
+					index = li.title.indexOf(' credits');
+					if (index > 0) fromCredits += +(li.title.substring(0, index));
+				}
+			}
 		}
-	}
-
-	for (var i in to.parent().siblings()) {
-		var li = to.parent().siblings()[i];
+	
+		for (var i = 0; i < to.parent().siblings().length; i++) {
+			var li = to.parent().siblings()[i];
+			
+			if (li.title) {
+				index = li.title.indexOf(' credits');
+				if (index > 0) toCredits += +(li.title.substring(0, index));
+			}
+		}
 		
-		if (li.title) {
-			index = li.title.indexOf(' credits');
-			if (index > 0) toCredits += +(li.title.substring(0, index));
-		}
+		toCredits = toCredits + credits;
+		fromCredits = fromCredits - credits;
+		
+		from.html("(" + fromCredits + " credits)");
+		to.html("(" + toCredits + " credits)");
 	}
-	
-	toCredits += credits;
-	fromCredits -= (2*credits);
-	
-	from.html("(" + fromCredits + " credits)");
-	to.html("(" + toCredits + " credits)");
 }
 
 function add_electives(Button) {
 	Button.click(function(){
 		var name = prompt("Please enter course name", "Elective");
 		if (name != null) {	// They did not select Cancel
-			var id = $(this).prev().children().last().attr('id');
+			var credits = prompt("Please enter the number of credits for " + name, "0");
+			if (credits != null) {	// They did not select Cancel
+				var id = $(this).prev().children().last().attr('id');
 	
-			document.getElementById(id).parentNode.innerHTML += '<li class="ui-default" id="elective' +
-				(num++) + '"><button>' + name + '</button>' + '<button class="delete">-</button></li>';
-			delete_elective($("button.delete"));
+				document.getElementById(id).parentNode.innerHTML += '<li class="ui-default ELECTIVE'
+					+ num + '" id="elective' + (num++) + '" title="' + credits + ' credits">' +
+					name + '<button class="delete">-</button></li>';
+			
+				// Allow this new element to be dragged and dropped
+				set_sorting($(document.getElementById(id).parentNode));
+				
+				// Reset prereq highlighting
+				$('.semester>li').unbind();
+				select_courses($(".semester>li"));
+				
+				// Reset deleting of any electives
+				$("button.delete").unbind();
+				delete_elective($("button.delete"));
+
+				var semester = $(this).prev();
+				add_credits(semester, credits);
+			}	
 		}
 	});
+}
+
+function add_credits(Semester, Credits) {
+	var span = Semester.children().first().children().first();
+	var index = span.text().indexOf(' credits');
+	var credits = +(span.text().substring(1, index));
+	credits += +(Credits);
+	span.text('(' + credits + ' credits)');
 }
 
 function delete_elective(Button) {
@@ -440,9 +490,39 @@ function delete_elective(Button) {
  	 		var html2 = html.substring(index1);
 			var index2 = html2.indexOf('</li>');
 			html2 = html2.substring(index2+5);
-		
+			
+			// Must be done before resetting the HTML (clearing the elective)
+			var title = document.getElementById(id).title;
+			index1 = title.indexOf(' credits');
+			var credits = title.substring(0, index1);
+			var semester = $(this).parent().parent();
+
+			// Clearing the elective
 			document.getElementById(id).parentNode.innerHTML = html1 + html2;
+			
+			// Must be done after resetting the HTML (clearing the elective)
+			remove_credits(semester, credits);
+			
+			// Reset prereq highlighting
+			$('.semester>li').unbind();
+			select_courses($(".semester>li"));
 		}
+	});
+}
+
+function remove_credits(Semester, Credits) {
+	var span = Semester.children().first().children().first();
+	var index = span.text().indexOf(' credits');
+	var credits = +(span.text().substring(1, index));
+	credits -= +(Credits);
+	span.text('(' + credits + ' credits)');
+}
+
+function print(Button) {
+	Button.click(function() {
+//		alert("Printing");
+		window.print();
+//		alert("done");
 	});
 }
 
