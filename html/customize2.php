@@ -146,7 +146,7 @@
     
 	<body>
         <h1>Customize your schedule</h1>
-        <?php if($_POST('major')=='Computer Science B.S.') { ?>
+        <?php if(array_key_exists('major', $_POST) && $_POST('major')=='Computer Science B.S.') { ?>
 		<h2>Major: Computer Science BS</h2>
             <div class="tabs">
                 <ul>
@@ -222,7 +222,7 @@
             </div>
             <?php } ?>
             
-            <?php if ($_POST['major'] == "Mathematics B.S."){ ?>
+            <?php if (array_key_exists('major', $_POST) && $_POST['major'] == "Mathematics B.S."){ ?>
             
 				<h2>Major: Mathematics BS</h2>
             <div class="tabs">
@@ -261,7 +261,7 @@
             
             <?php }?>
             
-            <?php if (array_key_exists('minor') && $_POST('minor')=="Mathematics"){ ?>
+            <?php if (array_key_exists('minor', $_POST) && $_POST('minor')=="Mathematics"){ ?>
             <h2>Minor: Mathematics</h2>
                 <div class="tabs">
                 	<ul>
@@ -330,7 +330,7 @@
                 	</div>
                 	<?php } ?>
                 	
-                	<?php if (array_key_exists('minor') && $_POST('minor')=="German"){ ?>
+                	<?php if (array_key_exists('minor', $_POST) && $_POST('minor')=="German"){ ?>
                 	
 						<h2>Major: German</h2>
             <div class="tabs">
@@ -363,19 +363,7 @@
                 </div>
         
         <button>Continue</button>
-        <div id="right">
-		<label for="addcourses">Other Courses to Add</label>
-		<input id="addcourses">
-		<button onClick="addCourse(document.getElementById('addcourses').value)">Add</button>
-		<div id="addlist"><br></div>
-		<br>
-		<label for="havecredit">Courses you have credit for</label>
-		<input id="havecredit">
-		<button onClick="addCredit(document.getElementById('havecredit').value)">Add</button>
-		<div id="havecreditlist"></div>
-		<br><br>
-		<button onClick="location.href='schedule.html'" >Continue</button>
-		</div>
+
 	</body>
 </html>
 <?php mysqli_close($con); ?>
