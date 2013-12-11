@@ -136,5 +136,72 @@
 	$a = new Major();
 	$a = new Minor();
 	$a = new Schedule();
-	echo "No syntax error yet :/";
+	
+	
+	class Node
+	{
+		public $depth = 0; //Course's weights
+		public $parentNode = null; //reference to prereq
+		public $children = array(); //postreqs
+		 
+		function __construct($params = null)
+		{
+		foreach($params as $key=>$val)
+		$this->$key = $val;
+		if (isset($this->parentNode))
+		$this->parentNode->addChild($this);
+		}
+		public function addChild(Node $node)
+		{
+		$this->children[] = $node;
+		}
+	}
+	class Tree
+	{
+	public $root = null;
+	
+	function __construct($maxLevel = 3)
+	{
+	$this->buildTree($maxLevel);
+	}
+	
+	public function buildTree($maxLevel = 3)
+	{
+	$this->root = new Node(array('text'=>'Root'));
+	$this->populateChildren($this->root, 1, $maxLevel);
+	}
+	
+	public function printNodes()
+	{
+	$this->printChildren($this->root);
+	}
+	
+	private function printChildren(Node $node)
+	{
+	$N = $node->depth * 4;
+	for ($idx = 0; $idx < $N; $idx++)
+	echo '&nbsp;';
+	
+	echo $node->text . "<br />\n";
+	foreach($node->children as $child)
+	$this->printChildren($child);
+	}
+	
+	private function populateChildren(Node $pnode, $level, $maxLevel)
+	{
+	//demonstrate how to populate tree's node
+	if ($level <= $maxLevel)
+	{
+	for($idx = 0; $idx < $level; $idx++)
+	{
+	$child = new Node(array(
+	'parentNode'=> $pnode,
+	'text' => "$level::Node[$idx]",
+	'depth'=>$level)
+	);
+	$this->populateChildren($child, $level + 1, $maxLevel);
+	}
+	}
+	}	
+	}
 ?>
