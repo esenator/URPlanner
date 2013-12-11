@@ -158,33 +158,33 @@
 	}
 	class Tree
 	{
-	public $root = null;
+		public $root = null;
 	
 	function __construct($maxLevel = 3)
 	{
-	$this->buildTree($maxLevel);
+		$this->buildTree($maxLevel);
 	}
 	
 	public function buildTree($maxLevel = 3)
 	{
-	$this->root = new Node(array('text'=>'Root'));
-	$this->populateChildren($this->root, 1, $maxLevel);
+		$this->root = new Node(array('text'=>'Root'));
+		$this->populateChildren($this->root, 1, $maxLevel);
 	}
 	
 	public function printNodes()
 	{
-	$this->printChildren($this->root);
+		$this->printChildren($this->root);
 	}
 	
 	private function printChildren(Node $node)
 	{
 	$N = $node->depth * 4;
-	for ($idx = 0; $idx < $N; $idx++)
-	echo '&nbsp;';
+		for ($idx = 0; $idx < $N; $idx++)
+			echo '&nbsp;';
 	
 	echo $node->text . "<br />\n";
-	foreach($node->children as $child)
-	$this->printChildren($child);
+		foreach($node->children as $child)
+			$this->printChildren($child);
 	}
 	
 	private function populateChildren(Node $pnode, $level, $maxLevel)
@@ -195,13 +195,13 @@
 	for($idx = 0; $idx < $level; $idx++)
 	{
 	$child = new Node(array(
-	'parentNode'=> $pnode,
-	'text' => "$level::Node[$idx]",
-	'depth'=>$level)
+		'parentNode'=> $pnode,
+		'text' => "$level::Node[$idx]",
+		'depth'=>$level)
 	);
 	$this->populateChildren($child, $level + 1, $maxLevel);
 	}
 	}
 	}	
-	}
+}
 ?>
