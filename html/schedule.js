@@ -10,6 +10,7 @@ $(function(){
 	
 	add_electives($("button.addElective"));
 //	delete_elective($("button.delete"));
+	save($("#save"));
 	print($("#print"));
 });
 
@@ -496,6 +497,12 @@ function delete_elective(Button) {
 			index1 = title.indexOf(' credits');
 			var credits = title.substring(0, index1);
 			var semester = $(this).parent().parent();
+			
+			if (lastSelected == id) {	// It is selected for showing prereqs
+				toWhite(id);
+				hideRight();
+				lastSelected = "";
+			}
 
 			// Clearing the elective
 			document.getElementById(id).parentNode.innerHTML = html1 + html2;
@@ -516,6 +523,13 @@ function remove_credits(Semester, Credits) {
 	var credits = +(span.text().substring(1, index));
 	credits -= +(Credits);
 	span.text('(' + credits + ' credits)');
+}
+
+function save(Button) {
+	Button.click(function() {
+		alert("Saving");
+		
+	});
 }
 
 function print(Button) {
