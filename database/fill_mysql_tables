@@ -2161,3 +2161,12 @@ INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_
 INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('225', '16', '136', '1', '29');
 INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('226', '16', '137', '1', '29');
 INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, 'req_id') VALUES ('227', '16', '138', '1', '29');
+
+INSERT INTO `URPlanner`.`majors` (`major_id`, `college`, `super_department`, `department`, `degree_type`, `major_name`) VALUES ('9', '1', '2', 'Modern Languages & Cultures', '2', 'German');
+
+INSERT INTO `URPlanner`.`minors` (`minor_id`, `college`, `super_department`, `department`, `minor_name`) VALUES ('13', '1', '2', 'Modern Languages & Cultures', 'German');
+
+INSERT INTO `URPlanner`.`clusters` (`cluster_id`, `college`, `super_department`, `department`, `cluster_name`) VALUES ('29', '1', '2', 'Modern Languages & Cultures', 'Introduction to German Language and Culture');
+INSERT INTO `URPlanner`.`clusters` (`cluster_id`, `college`, `super_department`, `department`, `cluster_name`) VALUES ('30', '1', '2', 'Modern Languages & Cultures', 'Intermediate German Language and Culture');
+INSERT INTO `URPlanner`.`clusters` (`cluster_id`, `college`, `super_department`, `department`, `cluster_name`) VALUES ('31', '1', '2', 'Modern Languages & Cultures', 'Advanced German Language & Culture');
+
