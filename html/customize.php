@@ -183,7 +183,7 @@
 		<h2>Major</h2>
 		
 		<div id="centermajor">
-			<?php //setUpMajors(); ?>
+			<?php if($_POST['major']== ?>
 				
 		</div>
 		

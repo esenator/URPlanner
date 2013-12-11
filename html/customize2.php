@@ -146,7 +146,7 @@
     
 	<body>
         <h1>Customize your schedule</h1>
-        
+        <?php if($_POST('major')=='Computer Science B.S.') { ?>
 		<h2>Major: Computer Science BS</h2>
             <div class="tabs">
                 <ul>
@@ -220,7 +220,46 @@
                 	<?php advancedCSCTable() ?>
             	</div>
             </div>
+            <?php } ?>
             
+            <?php if ($_POST['major'] == "Mathematics B.S."){ ?>
+            
+				<h2>Major: Mathematics BS</h2>
+            <div class="tabs">
+                <ul>
+                <li><a href="#tab1">Pre-declaration Courses</a></li>
+                <li><a href="#tab2">Core Courses</a></li>
+                <li><a href="#tab3">Advanced Courses</a></li>
+                </ul>
+               
+                <div id="tab1">
+                <h3>You must take the following courses:</h3>
+                <ul>
+                <li>MTH 161: Calculus IA</li>
+                <li>MTH 162: Calculus IIA</li>
+                <li>MTH 164: Multidimensional Calculus</li>
+<li>MTH 165: Linear Algebra with Differential Equations</li>
+                </ul>
+</div>
+               
+                <div id="tab2">
+            <h3>You must take the following courses:</h3>
+            <ul>
+            <li>MTH 235: Linear Algebra</li>
+            <li>MTH 236: Introduction to Algebra I</li>
+                <li>MTH 240: Introduction to Topology</li>
+                <li>MTH 265: Functions of a Real Variable I</li>
+                <li>MTH 282: Introduction to Complex Variables with Applications</li>
+              </ul>
+               
+                </div>
+           
+            <div id="tab3">
+            <h3 class="3">Please select six of the following options:</h3>
+                <input type="checkbox" class="check1 MATHAdvanced" name="ast241" />AST 241: Astrophysics I<br /><input type="checkbox" class="check1 MATHAdvanced" name="ast242" />AST 242: Astrophysics II<br /><input type="checkbox" class="check1 MATHAdvanced" name="bme218" />BME 218<br /><input type="checkbox" class="check1 MATHAdvanced" name="bme221" />BME 221<br /><input type="checkbox" class="check1 MATHAdvanced" name="bme230" />BME 230<br /><input type="checkbox" class="check1 MATHAdvanced" name="bme251" />BME 251<br /><input type="checkbox" class="check1 MATHAdvanced" name="bme 260" />BME 260<br /><input type="checkbox" class="check1 MATHAdvanced" name="bme283" />BME 283<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc250" />CSC 250: Corpus Linguistics<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc253" />CSC 253: Dynamic Language & Software Development<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc255" />CSC 255: Software Analysis and Improvement<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc256" />CSC 256: Operating Systems<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc257" />CSC 257: Computer Networks<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc258" />CSC 258: Parallel & Distributed Systems<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc260" />CSC 260: Dialog Systems: Conversational Systems: From Siri and Beyond<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc263" />CSC 263: Computer Models of Music<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc266" />CSC 266: GPU Parallel C/C++ Programming<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc281" />CSC 281: Intro to Cryptography<br /><input type="checkbox" class="check1 MATHAdvanced" name="csc284" />CSC 284: Advanced Algorithms<br /><input type="checkbox" class="check1 MATHAdvanced" name="ece210" />ECE 210<br /><input type="checkbox" class="check1 MATHAdvanced" name="ece216" />ECE 216<br />	</div>
+            </div>
+            
+            <?php }?>
             
             <h2>Minor: Mathematics</h2>
                 <div class="tabs">
