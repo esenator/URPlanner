@@ -2221,3 +2221,39 @@ INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `
 INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('308', '219', '1', '0', '0', '0', '0', '0', '12:00:00', '12:00:00');
 INSERT INTO `URPlanner`.`course_times` (`row_id`, `course_id`, `when_offered`, `on_monday`, `on_tuesday`, `on_wednesday`, `on_thursday`, `on_friday`, `start_time`, `end_time`) VALUES ('309', '219', '2', '0', '0', '0', '0', '0', '12:00:00', '12:00:00');
 
+INSERT INTO `URPlanner`.`prerequisites` (`row_id`, `pre_course_id`, `post_course_id`) VALUES ('156', '205', '206');
+
+INSERT INTO `URPlanner`.`minor_requirements` (`row_id`, `minor_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('116', '13', '202', '0', '1', '0', '5', '15');
+INSERT INTO `URPlanner`.`minor_requirements` (`row_id`, `minor_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('117', '13', '203', '0', '1', '0', '5', '15');
+INSERT INTO `URPlanner`.`minor_requirements` (`row_id`, `minor_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('118', '13', '205', '0', '1', '0', '5', '15');
+INSERT INTO `URPlanner`.`minor_requirements` (`row_id`, `minor_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('119', '13', '206', '0', '1', '0', '5', '15');
+INSERT INTO `URPlanner`.`minor_requirements` (`row_id`, `minor_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('120', '13', '207', '0', '1', '0', '5', '15');
+
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`) VALUES ('532', '9', '202', '0', '1', '0');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`) VALUES ('533', '9', '203', '0', '1', '0');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`) VALUES ('534', '9', '205', '0', '1', '0');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`) VALUES ('535', '9', '206', '0', '1', '0');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`) VALUES ('536', '9', '207', '0', '1', '0');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('537', '9', '208', '0', '0', '1', '4', '51');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('538', '9', '212', '0', '0', '1', '4', '51');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('539', '9', '210', '0', '0', '1', '4', '51');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('540', '9', '211', '0', '0', '1', '4', '51');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('541', '9', '215', '0', '0', '1', '4', '51');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('542', '9', '214', '0', '0', '1', '4', '51');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('543', '9', '212', '0', '0', '1', '4', '51');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('544', '9', '213', '0', '0', '1', '2', '52');
+INSERT INTO `URPlanner`.`major_requirements` (`row_id`, `major_id`, `course_id`, `is_pre_req`, `is_core`, `is_adv`, `req_num`, `req_id`) VALUES ('545', '9', '214', '0', '0', '1', '2', '52');
+
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('228', '29', '200', '2', '30');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('229', '29', '291', '2', '30');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('230', '29', '202', '1', '31');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('231', '29', '203', '1', '31');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('232', '29', '215', '1', '31');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('233', '30', '202', '2', '32');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('234', '30', '203', '2', '32');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('235', '30', '205', '1', '33');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('236', '30', '208', '1', '33');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('237', '31', '205', '3', '34');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('238', '31', '206', '3', '34');
+INSERT INTO `URPlanner`.`cluster_requirements` (`row_id`, `cluster_id`, `course_id`, `req_num`, `req_id`) VALUES ('239', '31', '207', '3', '34');
+
