@@ -261,6 +261,7 @@
             
             <?php }?>
             
+            <?php if (array_key_exists('minor') && $_POST('minor')=="Mathematics"){ ?>
             <h2>Minor: Mathematics</h2>
                 <div class="tabs">
                 	<ul>
@@ -327,6 +328,38 @@
                 		<h3 class="2">Please select two of the following options:</h3>
                 		<?php advancedMTHTable() ?>
                 	</div>
+                	<?php } ?>
+                	
+                	<?php if (array_key_exists('minor') && $_POST('minor')=="German"){ ?>
+                	
+						<h2>Major: German</h2>
+            <div class="tabs">
+                <ul>
+               
+                <li><a href="#tab4">Core Courses</a></li>
+                <li><a href="#tab5">Advanced Courses</a></li>
+                </ul>
+               
+                <div id="tab4">
+            <h3>You must take the following courses:</h3>
+            <ul>
+				<li>GER 151</li>
+				<li>GER 152</li>
+                <li>GER 200: Composition and Conversation</li>
+                <li>GER 202: Intoduction to German Cultural Studies</li>
+                <li>GER 203: Introduction to German Literature</li>
+				<li>CLT 1  :  Intro to Comparative Literature</li>
+				<li>CLT 2  :  Major Seminar</li>
+            </ul>
+               
+                </div>
+           
+            <div id="tab5">
+            <h3 class="3">Please select four of the following options:</h3>
+                <input type="checkbox" class="check1 GERAdvanced" name="ger204" />Ger 204: Marx<br /><input type="checkbox" class="check1 GERAdvanced" name="ger234" />GER 234: Strangers in a strange land<br /><input type="checkbox" class="check1 GERAdvanced" name="ger235" />GER 235: Hitler's Germany<br /><input type="checkbox" class="check1 GERAdvanced" name="ger275" />GER 275: Digital Cityscapes<br /><input type="checkbox" class="check1 GERAdvanced" name="ger294" />GER 294: On Genealogy<br /><input type="checkbox" class="check1 GERAdvanced" name="ger209" />GER 209: Cowboys and Indians<br /><input type="checkbox" class="check1 GERAdvanced" name="ger211" />GER 211: Jewish Writers and Rebels<br /><input type="checkbox" class="check1 GERAdvanced" name="ger215" />GER 215: Berlin: Tales of a city<br /><input type="checkbox" class="check1 GERAdvanced" name="ger288" />GER 288: Mothers, Comrades and Whores<br /><input type="checkbox" class="check1 GERAdvanced" name="ger391" />GER 391: Independent Study<br />	</div>
+            </div>
+                	
+                	<?php } ?>
                 </div>
         
         <button>Continue</button>
