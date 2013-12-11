@@ -75,7 +75,7 @@
 	}
 	
 	function POSTtoCustomize(){
-		$.post( "test.php", { "majors[]": majors, "minors[]": minors, "clusters[]": clusters } )
+		$.post( "customize.php", { "majors[]": majors, "minors[]": minors, "clusters[]": clusters } )
 		 .done(function( data ) {
 	alert( "Data Loaded: " + data );
 	});

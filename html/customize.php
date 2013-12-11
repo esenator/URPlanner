@@ -36,13 +36,13 @@
 	
 	while($row = mysqli_fetch_array($result))
 	{
-		$courses[$row['department'].$row['course_num']] = $row;
+		$courses[$row['course_id']] = $row;
 		
 	}
 
 	//Setting up majors
 	function setUpMajors(){
-		for ($i=0;$i<count[$majors];$i++){
+		for ($i=0;$i<count($majors);$i++){
 			echo "<h2>".$_POST['majors'][$i]."</h2>";
 			echo "<div class=\"tabs\">\n
 			<ul>
@@ -51,13 +51,13 @@
                 	<li><a href=\"#tab3\">Advanced Courses</a></li>
                 </ul>";
 			echo "<div id = \"tab1\">";
-			majorPreTab([$majors[$i]);
+			majorPreTab($majors[$i]);
 			echo "</div>";
 			echo "<div id = \"tab2\">";
-			majorCoreTab([$majors[$i]);
+			majorCoreTab($majors[$i]);
 			echo "</div>";
 			echo "<div id = \"tab3\">";
-			majorAdvancedTab([$majors[$i]);
+			majorAdvancedTab($majors[$i]);
 			echo "</div>";
 			echo "</div>";
 		}
@@ -91,6 +91,18 @@
 		while($row = mysqli_fetch_array($result))
 		{
 			$tracks[] = $row['track_id'];
+		}
+		$tracks = array_unique($tracks);
+		
+		return $tracks;
+	}
+	
+	function getRequiredForSection($sqlwheres){
+		global $con;
+		$result = mysqli_query($con,"select course_id from major_requirements where ".$sqlwheres);
+		while($row = mysqli_fetch_array($result))
+		{
+			$cs[] = $row['track_id'];
 		}
 		$tracks = array_unique($tracks);
 		
