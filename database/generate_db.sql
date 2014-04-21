@@ -19,7 +19,9 @@ DROP TABLE IF EXISTS `Course`;
 CREATE TABLE `Course` (
   `CourseNumber` VARCHAR(8) NOT NULL COMMENT 'Course Registration Number',
   `CourseTitle` VARCHAR(30) NOT NULL COMMENT 'Full Course Title/Name',
-  `Term` VARCHAR(20) NOT NULL COMMENT 'Course Term',
+  `Fall` bit(1) NOT NULL DEFAULT false,
+  `Spring` bit(1) NOT NULL DEFAULT false,
+  `Summer` bit(1) NOT NULL DEFAULT false,
   `Department` VARCHAR(20) NOT NULL COMMENT 'Department',
   `Credits` INT NOT NULL COMMENT 'Course Credits',
   PRIMARY KEY (`CourseNumber`)
@@ -71,8 +73,8 @@ ALTER TABLE `Course` ADD FOREIGN KEY (CourseNumber) REFERENCES `Prerequisites` (
 -- Test Data
 -- ---
 
--- INSERT INTO `Course` (`CourseNumber`,`CourseTitle`,`Term`,`Department`,`Credits`) VALUES
--- ('','','','','');
+-- INSERT INTO `Course` (`CourseNumber`,`CourseTitle`,`Fall`,`Spring`,`Summer`,`Department`,`Credits`) VALUES
+-- ('','','','','','','');
 -- INSERT INTO `Prerequisites` (`CourseNumber`,`PrereqCN`) VALUES
 -- ('','');
 -- INSERT INTO `Schedule` (`NetID`,`Schedule`,`Name`,`Date`) VALUES
