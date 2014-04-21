@@ -17,13 +17,12 @@
 DROP TABLE IF EXISTS `Course`;
 		
 CREATE TABLE `Course` (
-  `CRN` INTEGER NOT NULL COMMENT 'Course Registration Number',
-  `CourseNumber` VARCHAR(8) NOT NULL COMMENT 'Course Number',
+  `CourseNumber` VARCHAR(8) NOT NULL COMMENT 'Course Registration Number',
   `CourseTitle` VARCHAR(30) NOT NULL COMMENT 'Full Course Title/Name',
   `Term` VARCHAR(20) NOT NULL COMMENT 'Course Term',
   `Department` VARCHAR(20) NOT NULL COMMENT 'Department',
   `Credits` INT NOT NULL COMMENT 'Course Credits',
-  PRIMARY KEY (`CRN`)
+  PRIMARY KEY (`CourseNumber`)
 ) COMMENT 'Course Database';
 
 -- ---
@@ -34,9 +33,9 @@ CREATE TABLE `Course` (
 DROP TABLE IF EXISTS `Prerequisites`;
 		
 CREATE TABLE `Prerequisites` (
-  `CRN` INTEGER NOT NULL COMMENT 'Course Registration Number',
-  `PrereqCRN` INTEGER NOT NULL COMMENT 'Course Prerequisite''s CRN',
-  PRIMARY KEY (`CRN`)
+  `CourseNumber` VARCHAR(8) NOT NULL COMMENT 'Course Registration Number',
+  `PrereqCN` VARCHAR(8) NOT NULL COMMENT 'Course Prerequisite''s CRN',
+  PRIMARY KEY (`CourseNumber`)
 ) COMMENT 'Course and Prerequisite Relation. Exists a relation for ever';
 
 -- ---
@@ -58,7 +57,7 @@ CREATE TABLE `Schedule` (
 -- Foreign Keys 
 -- ---
 
-ALTER TABLE `Course` ADD FOREIGN KEY (CRN) REFERENCES `Prerequisites` (`CRN`);
+ALTER TABLE `Course` ADD FOREIGN KEY (CourseNumber) REFERENCES `Prerequisites` (`CourseNumber`);
 
 -- ---
 -- Table Properties
@@ -72,9 +71,9 @@ ALTER TABLE `Course` ADD FOREIGN KEY (CRN) REFERENCES `Prerequisites` (`CRN`);
 -- Test Data
 -- ---
 
--- INSERT INTO `Course` (`CRN`,`CourseNumber`,`CourseTitle`,`Term`,`Department`,`Credits`) VALUES
--- ('','','','','','');
--- INSERT INTO `Prerequisites` (`CRN`,`PrereqCRN`) VALUES
+-- INSERT INTO `Course` (`CourseNumber`,`CourseTitle`,`Term`,`Department`,`Credits`) VALUES
+-- ('','','','','');
+-- INSERT INTO `Prerequisites` (`CourseNumber`,`PrereqCN`) VALUES
 -- ('','');
 -- INSERT INTO `Schedule` (`NetID`,`Schedule`,`Name`,`Date`) VALUES
 -- ('','','','');
