@@ -17,12 +17,12 @@
 DROP TABLE IF EXISTS `Course`;
 		
 CREATE TABLE `Course` (
-  `CRN` INTEGER NULL DEFAULT NULL COMMENT 'Course Registration Number',
-  `CourseNumber` MEDIUMTEXT(8) NULL DEFAULT NULL COMMENT 'Course Number',
-  `CourseTitle` MEDIUMTEXT(30) NULL DEFAULT NULL COMMENT 'Full Course Title/Name',
-  `Term` MEDIUMTEXT(20) NULL DEFAULT NULL COMMENT 'Course Term',
-  `Department` MEDIUMTEXT(20) NULL DEFAULT NULL COMMENT 'Department',
-  `Credits` FLOAT(12) NULL DEFAULT NULL COMMENT 'Course Credits',
+  `CRN` INTEGER NOT NULL COMMENT 'Course Registration Number',
+  `CourseNumber` VARCHAR(8) NOT NULL COMMENT 'Course Number',
+  `CourseTitle` VARCHAR(30) NOT NULL COMMENT 'Full Course Title/Name',
+  `Term` VARCHAR(20) NOT NULL COMMENT 'Course Term',
+  `Department` VARCHAR(20) NOT NULL COMMENT 'Department',
+  `Credits` INT NOT NULL COMMENT 'Course Credits',
   PRIMARY KEY (`CRN`)
 ) COMMENT 'Course Database';
 
@@ -34,8 +34,8 @@ CREATE TABLE `Course` (
 DROP TABLE IF EXISTS `Prerequisites`;
 		
 CREATE TABLE `Prerequisites` (
-  `CRN` INTEGER NULL DEFAULT NULL COMMENT 'Course Registration Number',
-  `PrereqCRN` INTEGER NULL DEFAULT NULL COMMENT 'Course Prerequisite''s CRN',
+  `CRN` INTEGER NOT NULL COMMENT 'Course Registration Number',
+  `PrereqCRN` INTEGER NOT NULL COMMENT 'Course Prerequisite''s CRN',
   PRIMARY KEY (`CRN`)
 ) COMMENT 'Course and Prerequisite Relation. Exists a relation for ever';
 
@@ -47,10 +47,10 @@ CREATE TABLE `Prerequisites` (
 DROP TABLE IF EXISTS `Schedule`;
 		
 CREATE TABLE `Schedule` (
-  `NetID` MEDIUMTEXT(20) NULL DEFAULT NULL COMMENT 'NetID or Username of Student',
-  `Schedule` MEDIUMTEXT(200) NULL DEFAULT NULL COMMENT 'Schedule stored as a JSON string',
-  `Name` MEDIUMTEXT(30) NULL DEFAULT NULL COMMENT 'Student''s Name',
-  `Date` DATE(10) NULL DEFAULT NULL COMMENT 'Date schedule editted',
+  `NetID` VARCHAR(20) NOT NULL COMMENT 'NetID or Username of Student',
+  `Schedule` VARCHAR(200) NOT NULL COMMENT 'Schedule stored as a JSON string',
+  `Name` VARCHAR(30) NOT NULL COMMENT 'Student''s Name',
+  `Date` DATE NOT NULL COMMENT 'Date schedule editted',
   PRIMARY KEY (`NetID`)
 ) COMMENT 'Relation for storing personal schedules based on NetID';
 
